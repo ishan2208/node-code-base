@@ -1,0 +1,1483 @@
+{
+	"info": {
+		"_postman_id": "6efe5a80-a051-4673-9f49-f7cfa9bf4308",
+		"name": "Dev API Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authorisation",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Admin Login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "98386eee-ea06-4b48-aefe-7c1a5348aad7",
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Set admin token\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.environment.set(\"token_admin\", \"Bearer \"+ jsonData.token);",
+											"});",
+											"",
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"support@comcate.com\",\n  \"password\": \"test@123\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/admin/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"admin",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "System Icons",
+			"item": [
+				{
+					"name": "Create System Icon : Animal",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"fileUrl\":\"https://cyberdyne-dev.s3.amazonaws.com/agency_0/staging/system_icon/animal.png\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/system-icons",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"system-icons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create System Icon : Vehicle",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"fileUrl\":\"https://cyberdyne-dev.s3.amazonaws.com/agency_0/staging/system_icon/vehicle.png\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/system-icons",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"system-icons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create System Icon : General",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"fileUrl\":\"https://cyberdyne-dev.s3.amazonaws.com/agency_0/staging/system_icon/general.png\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/system-icons",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"system-icons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create System Icon : Other",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"fileUrl\":\"https://cyberdyne-dev.s3.amazonaws.com/agency_0/staging/system_icon/others.png\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/system-icons",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"system-icons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create System Icon : Light",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"fileUrl\":\"https://cyberdyne-dev.s3.amazonaws.com/agency_0/staging/system_icon/light.png\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/system-icons",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"system-icons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create System Icon : Graffiti",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"fileUrl\":\"https://cyberdyne-dev.s3.amazonaws.com/agency_0/staging/system_icon/graffiti.png\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/system-icons",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"system-icons"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "System Predefined Violations",
+			"item": [
+				{
+					"name": "System VT: Animal Control",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"label\":\"Animal Control\",\n\t\"isAvailableForActivation\": true,\n\t\"isCustom\": false,\n\t\"iconId\": 1\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/system-xerce-violation-types",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"system-xerce-violation-types"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "System VT: Vehicle",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"label\":\"Vehicle\",\n\t\"isAvailableForActivation\": true,\n\t\"isCustom\": false,\n\t\"iconId\": 2\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/system-xerce-violation-types",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"system-xerce-violation-types"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "System VT: General",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"label\":\"General\",\n\t\"isAvailableForActivation\": true,\n\t\"isCustom\": false,\n\t\"iconId\": 3\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/system-xerce-violation-types",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"system-xerce-violation-types"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "System Defined Entity Sections",
+			"item": [
+				{
+					"name": "System Defined Entity Section: Animal",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"label\":\"Animal\",\n\t\"systemXerceViolationTypeId\":1,\n\t\"systemXerceEntityFields\":[\n\t\t{\n\t\t\t\"label\":\"Animal Colour\",\n\t\t\t\"type\":\"TEXT\",\n\t\t\t\"options\":[],\n\t\t\t\"sequence\":1,\n\t\t\t\"isMergeField\": true,\n\t\t\t\"isIncludedInEntityName\":true,\n\t\t\t\"isActive\":true\n\t\t},\n\t\t{\n\t\t\t\"label\":\"License Number\",\n\t\t\t\"type\":\"TEXT\",\n\t\t\t\"options\":[],\n\t\t\t\"sequence\":2,\n\t\t\t\"isMergeField\": true,\n\t\t\t\"isIncludedInEntityName\":true,\n\t\t\t\"isActive\":true\n\t\t},\n\t\t{\n\t\t\t\"label\":\"Age\",\n\t\t\t\"type\":\"NUMBER\",\n\t\t\t\"options\":[],\n\t\t\t\"sequence\":3,\n\t\t\t\"isMergeField\": true,\n\t\t\t\"isIncludedInEntityName\":true,\n\t\t\t\"isActive\":true\n\t\t},\n\t\t{\n\t\t\t\"label\":\"Breed\",\n\t\t\t\"type\":\"PICKLIST\",\n\t\t\t\"options\":[\"breedA\", \"breedB\", \"breedC\"],\n\t\t\t\"sequence\":4,\n\t\t\t\"isMergeField\": false,\n\t\t\t\"isIncludedInEntityName\":false,\n\t\t\t\"isActive\":true\n\t\t}\n\t]\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/system-xerce-entity-sections",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"system-xerce-entity-sections"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "System Defined Entity Section: Vehicle",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"label\":\"Vehicle\",\n\t\"systemXerceViolationTypeId\":2,\n\t\"systemXerceEntityFields\":[\n\t\t{\n\t\t\t\"label\":\"Vehicle Color\",\n\t\t\t\"type\":\"TEXT\",\n\t\t\t\"options\":[],\n\t\t\t\"sequence\":1,\n\t\t\t\"isMergeField\": true,\n\t\t\t\"isIncludedInEntityName\":true,\n\t\t\t\"isActive\":true\n\t\t},\n\t\t{\n\t\t\t\"label\":\"License Number\",\n\t\t\t\"type\":\"TEXT\",\n\t\t\t\"options\":[],\n\t\t\t\"sequence\":2,\n\t\t\t\"isMergeField\": true,\n\t\t\t\"isIncludedInEntityName\":true,\n\t\t\t\"isActive\":true\n\t\t},\n\t\t{\n\t\t\t\"label\":\"Model Number\",\n\t\t\t\"type\":\"NUMBER\",\n\t\t\t\"options\":[],\n\t\t\t\"sequence\":3,\n\t\t\t\"isMergeField\": true,\n\t\t\t\"isIncludedInEntityName\":true,\n\t\t\t\"isActive\":true\n\t\t}\n\t]\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/system-xerce-entity-sections",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"system-xerce-entity-sections"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Agencies",
+			"item": [
+				{
+					"name": "Create Agency: Alabama",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"City of Alabama\",\n    \"websiteURL\": \"https://alabama.com\",\n    \"email\": \"support@alabama.com\",\n    \"streetAddress\": \"545,Alabama\",\n    \"city\": \"Alabama\",\n    \"state\": \"AL\",\n    \"zip\": \"94016\",\n    \"agencyTimezone\": \"PST\",\n    \"whitelistURL\": \"\",\n    \"xerce\": {\n       \"name\":\"Code Enforcement\",\n       \"isActive\": true,\n       \"isCaseNumberYearIncluded\": true,\n       \"caseNumberInitialization\":1,\n       \"isCaseNumberResettable\":true,\n       \"isFeeReceiptNumberYearIncluded\":true,\n       \"feeReceiptNumberInitialization\":1,\n       \"isFeeReceiptNumberResettable\":true,\n       \"caseNumberPrefix\":\"CE\",\n       \"feeReceiptNumberPrefix\":\"FR\",\n       \"violationTypes\": [\n       \t{\n       \t\t\"systemXerceViolationTypeId\":1,\n       \t\t\"isActive\": true\n       \t},\n       \t{\n       \t\t\"systemXerceViolationTypeId\":2,\n       \t\t\"isActive\": true\n       \t},\n       \t{\n       \t\t\"systemXerceViolationTypeId\":3,\n       \t\t\"isActive\": true\n       \t},\n       \t{\n       \t\t\"systemXerceViolationTypeId\":4,\n       \t\t\"isActive\": true\n       \t}\n       \t]\n    }\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/agencies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"agencies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Agency: Alaska",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"City of Alaska\",\n    \"websiteURL\": \"https://alaska.com\",\n    \"email\": \"support@alaska.com\",\n    \"streetAddress\": \"545,Alaska\",\n    \"city\": \"Alaska\",\n    \"state\": \"AK\",\n    \"zip\": \"94016\",\n    \"agencyTimezone\": \"PST\",\n    \"whitelistURL\": \"\",\n    \"xerce\": {\n       \"name\":\"Code Enforcement\",\n       \"isActive\": true,\n       \"isCaseNumberYearIncluded\": true,\n       \"caseNumberInitialization\":1,\n       \"isCaseNumberResettable\":true,\n       \"isFeeReceiptNumberYearIncluded\":true,\n       \"feeReceiptNumberInitialization\":1,\n       \"isFeeReceiptNumberResettable\":true,\n       \"caseNumberPrefix\":\"CE\",\n       \"feeReceiptNumberPrefix\":\"FR\",\n       \"violationTypes\": [\n       \t{\n       \t\t\"systemXerceViolationTypeId\":1,\n       \t\t\"isActive\": true\n       \t},\n       \t{\n       \t\t\"systemXerceViolationTypeId\":2,\n       \t\t\"isActive\": false\n       \t},\n       \t{\n       \t\t\"systemXerceViolationTypeId\":3,\n       \t\t\"isActive\": false\n       \t},\n       \t{\n       \t\t\"systemXerceViolationTypeId\":4,\n       \t\t\"isActive\": false\n       \t}\n       \t]\n    }\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/agencies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"agencies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Agency: Arizona",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"City of Arizona\",\n    \"websiteURL\": \"https://arizona.com\",\n    \"email\": \"support@arizona.com\",\n    \"streetAddress\": \"545,Arizona\",\n    \"city\": \"Arizona\",\n    \"state\": \"AZ\",\n    \"zip\": \"94016\",\n    \"agencyTimezone\": \"PST\",\n    \"whitelistURL\": \"\",\n    \"xerce\": {\n       \"name\":\"Code Enforcement\",\n       \"isActive\": true,\n       \"isCaseNumberYearIncluded\": false,\n       \"caseNumberInitialization\":1,\n       \"isCaseNumberResettable\":false,\n       \"isFeeReceiptNumberYearIncluded\":false,\n       \"feeReceiptNumberInitialization\":1,\n       \"isFeeReceiptNumberResettable\":false,\n       \"caseNumberPrefix\":\"CE\",\n       \"feeReceiptNumberPrefix\":\"FR\",\n       \"violationTypes\": [\n       \t{\n       \t\t\"systemXerceViolationTypeId\":1,\n       \t\t\"isActive\": true\n       \t},\n       \t{\n       \t\t\"systemXerceViolationTypeId\":2,\n       \t\t\"isActive\": false\n       \t},\n       \t{\n       \t\t\"systemXerceViolationTypeId\":3,\n       \t\t\"isActive\": false\n       \t},\n       \t{\n       \t\t\"systemXerceViolationTypeId\":4,\n       \t\t\"isActive\": false\n       \t}\n       \t]\n    }\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/agencies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"agencies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Agency: Arkansas",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"City of Arkansas\",\n    \"websiteURL\": \"https://arkansas.com\",\n    \"email\": \"support@arkansas.com\",\n    \"streetAddress\": \"545,Arkansas\",\n    \"city\": \"Arkansas\",\n    \"state\": \"AR\",\n    \"zip\": \"94016\",\n    \"agencyTimezone\": \"PST\",\n    \"whitelistURL\": \"\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/agencies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"agencies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Agency: California",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"City of California\",\n    \"websiteURL\": \"https://california.com\",\n    \"email\": \"support@california.com\",\n    \"streetAddress\": \"545,California\",\n    \"city\": \"California\",\n    \"state\": \"CA\",\n    \"zip\": \"94016\",\n    \"agencyTimezone\": \"PST\",\n    \"whitelistURL\": \"\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/agencies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"agencies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Agency: Colorado",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"City of Colorado\",\n    \"websiteURL\": \"https://colorado.com\",\n    \"email\": \"support@colorado.com\",\n    \"streetAddress\": \"545,Colorado\",\n    \"city\": \"Colorado\",\n    \"state\": \"CO\",\n    \"zip\": \"94016\",\n    \"agencyTimezone\": \"PST\",\n    \"whitelistURL\": \"\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/agencies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"agencies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Agency: Connecticut",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"City of Connecticut\",\n    \"websiteURL\": \"https://connecticut.com\",\n    \"email\": \"support@connecticut.com\",\n    \"streetAddress\": \"545,Connecticut\",\n    \"city\": \"Connecticut\",\n    \"state\": \"CT\",\n    \"zip\": \"94016\",\n    \"agencyTimezone\": \"PST\",\n    \"whitelistURL\": \"\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/agencies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"agencies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Agency: Delaware",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"City of Delaware\",\n    \"websiteURL\": \"https://delaware.com\",\n    \"email\": \"support@delaware.com\",\n    \"streetAddress\": \"545,Delaware\",\n    \"city\": \"Delaware\",\n    \"state\": \"DE\",\n    \"zip\": \"94016\",\n    \"agencyTimezone\": \"PST\",\n    \"whitelistURL\": \"\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/agencies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"agencies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Agency: Florida",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"City of Florida\",\n    \"websiteURL\": \"https://florida.com\",\n    \"email\": \"support@florida.com\",\n    \"streetAddress\": \"545,Florida\",\n    \"city\": \"Florida\",\n    \"state\": \"FL\",\n    \"zip\": \"94016\",\n    \"agencyTimezone\": \"PST\",\n    \"whitelistURL\": \"\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/agencies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"agencies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Agency: Georgia",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"City of Georgia\",\n    \"websiteURL\": \"https://georgia.com\",\n    \"email\": \"support@georgia.com\",\n    \"streetAddress\": \"545,Georgia\",\n    \"city\": \"Georgia\",\n    \"state\": \"GA\",\n    \"zip\": \"94016\",\n    \"agencyTimezone\": \"PST\",\n    \"whitelistURL\": \"\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/agencies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"agencies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Agency: Hawaii",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"City of Hawaii\",\n    \"websiteURL\": \"https://hawaii.com\",\n    \"email\": \"support@hawaii.com\",\n    \"streetAddress\": \"545,Hawaii\",\n    \"city\": \"Hawaii\",\n    \"state\": \"HI\",\n    \"zip\": \"94016\",\n    \"agencyTimezone\": \"PST\",\n    \"whitelistURL\": \"\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/agencies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"agencies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Agency: Idaho",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"City of Idaho\",\n    \"websiteURL\": \"https://idaho.com\",\n    \"email\": \"support@idaho.com\",\n    \"streetAddress\": \"545,Idaho\",\n    \"city\": \"Idaho\",\n    \"state\": \"ID\",\n    \"zip\": \"94016\",\n    \"agencyTimezone\": \"PST\",\n    \"whitelistURL\": \"\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/agencies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"agencies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Agency: Illinois",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"City of Illinois\",\n    \"websiteURL\": \"https://illinois.com\",\n    \"email\": \"support@illinois.com\",\n    \"streetAddress\": \"545,Illinois\",\n    \"city\": \"Illinois\",\n    \"state\": \"IL\",\n    \"zip\": \"94016\",\n    \"agencyTimezone\": \"PST\",\n    \"whitelistURL\": \"\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/agencies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"agencies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Agency: Indiana",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"City of Indiana\",\n    \"websiteURL\": \"https://indiana.com\",\n    \"email\": \"support@indiana.com\",\n    \"streetAddress\": \"545,Indiana\",\n    \"city\": \"Indiana\",\n    \"state\": \"IN\",\n    \"zip\": \"94016\",\n    \"agencyTimezone\": \"PST\",\n    \"whitelistURL\": \"\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/agencies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"agencies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Agency: Iowa",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"City of Iowa\",\n    \"websiteURL\": \"https://iowa.com\",\n    \"email\": \"support@iowa.com\",\n    \"streetAddress\": \"545,Iowa\",\n    \"city\": \"Iowa\",\n    \"state\": \"IA\",\n    \"zip\": \"94016\",\n    \"agencyTimezone\": \"PST\",\n    \"whitelistURL\": \"\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/agencies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"agencies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Agency: Kansas",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"City of Kansas\",\n    \"websiteURL\": \"https://kansas.com\",\n    \"email\": \"support@kansas.com\",\n    \"streetAddress\": \"545,Kansas\",\n    \"city\": \"Kansas\",\n    \"state\": \"KS\",\n    \"zip\": \"94016\",\n    \"agencyTimezone\": \"PST\",\n    \"whitelistURL\": \"\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/agencies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"agencies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Agency: Kentucky",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"City of Kentucky\",\n    \"websiteURL\": \"https://kentucky.com\",\n    \"email\": \"support@kentucky.com\",\n    \"streetAddress\": \"545,Kentucky\",\n    \"city\": \"Kentucky\",\n    \"state\": \"KY\",\n    \"zip\": \"94016\",\n    \"agencyTimezone\": \"PST\",\n    \"whitelistURL\": \"\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/agencies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"agencies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Agency: Louisiana",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"City of Louisiana\",\n    \"websiteURL\": \"https://louisiana.com\",\n    \"email\": \"support@louisiana.com\",\n    \"streetAddress\": \"545,Louisiana\",\n    \"city\": \"Louisiana\",\n    \"state\": \"LA\",\n    \"zip\": \"94016\",\n    \"agencyTimezone\": \"PST\",\n    \"whitelistURL\": \"\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/agencies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"agencies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Agency: Maine",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"City of Maine\",\n    \"websiteURL\": \"https://maine.com\",\n    \"email\": \"support@maine.com\",\n    \"streetAddress\": \"545,Maine\",\n    \"city\": \"Maine\",\n    \"state\": \"ME\",\n    \"zip\": \"94016\",\n    \"agencyTimezone\": \"PST\",\n    \"whitelistURL\": \"\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/agencies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"agencies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Agency: Maryland",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"City of Maryland\",\n    \"websiteURL\": \"https://maryland.com\",\n    \"email\": \"support@maryland.com\",\n    \"streetAddress\": \"545,Maryland\",\n    \"city\": \"Maryland\",\n    \"state\": \"MD\",\n    \"zip\": \"94016\",\n    \"agencyTimezone\": \"PST\",\n    \"whitelistURL\": \"\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/agencies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"agencies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Agency: Massachusetts",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"City of Massachusetts\",\n    \"websiteURL\": \"https://massachusetts.com\",\n    \"email\": \"support@massachusetts.com\",\n    \"streetAddress\": \"545,Massachusetts\",\n    \"city\": \"Massachusetts\",\n    \"state\": \"MA\",\n    \"zip\": \"94016\",\n    \"agencyTimezone\": \"PST\",\n    \"whitelistURL\": \"\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/agencies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"agencies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Agency: Michigan",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"City of Michigan\",\n    \"websiteURL\": \"https://michigan.com\",\n    \"email\": \"support@michigan.com\",\n    \"streetAddress\": \"545,Michigan\",\n    \"city\": \"Michigan\",\n    \"state\": \"MI\",\n    \"zip\": \"94016\",\n    \"agencyTimezone\": \"PST\",\n    \"whitelistURL\": \"\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/agencies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"agencies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Agency: Minnesota",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"City of Minnesota\",\n    \"websiteURL\": \"https://minnesota.com\",\n    \"email\": \"support@minnesota.com\",\n    \"streetAddress\": \"545,Minnesota\",\n    \"city\": \"Minnesota\",\n    \"state\": \"MN\",\n    \"zip\": \"94016\",\n    \"agencyTimezone\": \"PST\",\n    \"whitelistURL\": \"\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/agencies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"agencies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Agency: Mississippi",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"City of Mississippi\",\n    \"websiteURL\": \"https://mississippi.com\",\n    \"email\": \"support@mississippi.com\",\n    \"streetAddress\": \"545,Mississippi\",\n    \"city\": \"Mississippi\",\n    \"state\": \"MS\",\n    \"zip\": \"94016\",\n    \"agencyTimezone\": \"PST\",\n    \"whitelistURL\": \"\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/agencies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"agencies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Agency: Missouri",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"City of Missouri\",\n    \"websiteURL\": \"https://missouri.com\",\n    \"email\": \"support@missouri.com\",\n    \"streetAddress\": \"545,Missouri\",\n    \"city\": \"Missouri\",\n    \"state\": \"MO\",\n    \"zip\": \"94016\",\n    \"agencyTimezone\": \"PST\",\n    \"whitelistURL\": \"\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/agencies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"agencies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Agency: Montana",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"City of Montana\",\n    \"websiteURL\": \"https://montana.com\",\n    \"email\": \"support@montana.com\",\n    \"streetAddress\": \"545,Montana\",\n    \"city\": \"Montana\",\n    \"state\": \"MT\",\n    \"zip\": \"94016\",\n    \"agencyTimezone\": \"PST\",\n    \"whitelistURL\": \"\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/agencies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"agencies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Agency: Nebraska",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"City of Nebraska\",\n    \"websiteURL\": \"https://nebraska.com\",\n    \"email\": \"support@nebraska.com\",\n    \"streetAddress\": \"545,Nebraska\",\n    \"city\": \"Nebraska\",\n    \"state\": \"NE\",\n    \"zip\": \"94016\",\n    \"agencyTimezone\": \"PST\",\n    \"whitelistURL\": \"\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/agencies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"agencies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Agency: Nevada",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"City of Nevada\",\n    \"websiteURL\": \"https://nevada.com\",\n    \"email\": \"support@nevada.com\",\n    \"streetAddress\": \"545,Nevada\",\n    \"city\": \"Nevada\",\n    \"state\": \"NV\",\n    \"zip\": \"94016\",\n    \"agencyTimezone\": \"PST\",\n    \"whitelistURL\": \"\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/agencies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"agencies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Agency: New Hampshire",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"City of New Hampshire\",\n    \"websiteURL\": \"https://newhampshire.com\",\n    \"email\": \"support@newhampshire.com\",\n    \"streetAddress\": \"545,New Hampshire\",\n    \"city\": \"New Hampshire\",\n    \"state\": \"NH\",\n    \"zip\": \"94016\",\n    \"agencyTimezone\": \"PST\",\n    \"whitelistURL\": \"\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/agencies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"agencies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Agency: New Jersey",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"City of New Jersey\",\n    \"websiteURL\": \"https://newjersey.com\",\n    \"email\": \"support@newjersey.com\",\n    \"streetAddress\": \"545,New Jersey\",\n    \"city\": \"New Jersey\",\n    \"state\": \"NJ\",\n    \"zip\": \"94016\",\n    \"agencyTimezone\": \"PST\",\n    \"whitelistURL\": \"\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/agencies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"agencies"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Create User : Alabam Agency",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}",
+								"description": "}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"firstName\": \"cyberdyne\",\n   \"lastName\": \"user\",\n   \"email\" : \"cyuser@comcate.com\",\n   \"phone\" : \"12345161\",\n   \"title\" : \"manager\",\n   \"department\": \"IT\",\n   \"isActive\": true,\n   \"isSiteAdmin\": true,\n   \"xerce\": {\n   \t\t\"xerceId\": 1,\n   \t\t\"isProductAdmin\": true,\n   \t\t\"isActive\": true,\n   \t\t\"reportAccess\": \"ALL_STAFF\",\n   \t\t\"dashboardAccess\": \"SELF_DASHBOARD\",\n   \t\t\"feesAccess\": \"CAN_VOID\",\n   \t\t\"violationTypePermissions\": [\n   \t\t\t{\n   \t\t\t\t\"configXerceViolationTypeId\": 1,\n   \t\t\t\t\"violationTypeAccess\": \"BASIC\"\n   \t\t\t}\n   \t\t\t]\n   }\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/agencies/1/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"agencies",
+								"1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

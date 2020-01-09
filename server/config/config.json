@@ -1,0 +1,34 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "password",
+    "database": "cyberdyne",
+    "host": "127.0.0.1",
+    "dialect": "postgresql",
+    "operatorsAliases": "false"
+  },
+  "test": {
+    "username": "postgres",
+    "password": "password",
+    "database": "cyberdyne",
+    "host": "127.0.0.1",
+    "dialect": "postgresql",
+    "operatorsAliases": "false"
+  },
+  "stage": {
+    "username": "postgres",
+    "password": "password",
+    "database": "cyberdyne",
+    "host": "127.0.0.1",
+    "dialect": "postgresql",
+    "operatorsAliases": "false"
+  },
+  "prod": {
+    "username": "postgres",
+    "password": "password",
+    "database": "cyberdyne",
+    "host": "127.0.0.1",
+    "dialect": "postgresql",
+    "operatorsAliases": "false"
+  }
+}

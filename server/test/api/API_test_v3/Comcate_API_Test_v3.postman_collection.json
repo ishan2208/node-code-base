@@ -1,0 +1,2457 @@
+{
+	"info": {
+		"_postman_id": "9a892c14-1a1d-48b9-8f83-ff77de548a6a",
+		"name": "Comcate_API_Test_v3 copy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Admin Panel",
+			"item": [
+				{
+					"name": "Admin Login",
+					"item": [
+						{
+							"name": "Comcate Admin Login- Missing Email",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f4729161-0aba-4d18-85de-1eab9709aa3f",
+										"exec": [
+											"var responseJson = JSON.parse(responseBody);",
+											"",
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"pm.test(\"Error Message shows missing email\", function () {",
+											"    pm.expect(responseJson.message == \"Invalid request. Missing required property: email\").to.be.true;",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"username\":\"support@comcate.com\",\n\t\"password\":\"test@123\"\n}"
+								},
+								"url": {
+									"raw": "{{env}}/admin/login",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"admin",
+										"login"
+									]
+								},
+								"description": "Login to the server and fetch the token into env variables"
+							},
+							"response": []
+						},
+						{
+							"name": "Comcate Admin Login- Missing field",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "39bea4e4-b42b-47cc-bfb3-d16594eb81eb",
+										"exec": [
+											"var responseJson = JSON.parse(responseBody);",
+											"",
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"pm.test(\"Error Message shows missing password\", function () {",
+											"    pm.expect(responseJson.message == \"Invalid request. Missing required property: password\").to.be.true;",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"username\":\"support@comcate.com\"\n}"
+								},
+								"url": {
+									"raw": "{{env}}/admin/login",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"admin",
+										"login"
+									]
+								},
+								"description": "Login to the server and fetch the token into env variables"
+							},
+							"response": []
+						},
+						{
+							"name": "Comcate Admin Login- Empty Body",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "39bea4e4-b42b-47cc-bfb3-d16594eb81eb",
+										"exec": [
+											"var responseJson = JSON.parse(responseBody);",
+											"",
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"pm.test(\"Error Message shows missing password\", function () {",
+											"    pm.expect(responseJson.message == \"Invalid request. Missing required property: password\").to.be.true;",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{}"
+								},
+								"url": {
+									"raw": "{{env}}/admin/login",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"admin",
+										"login"
+									]
+								},
+								"description": "Login to the server and fetch the token into env variables"
+							},
+							"response": []
+						},
+						{
+							"name": "Comcate Admin Login - Invalid Email",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "e1c2e5cb-8e58-4229-936e-dd3a0c7c05b0",
+										"exec": [
+											"var responseJson = JSON.parse(responseBody);",
+											"",
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"pm.test(\"Error Message shows invalid email text\", function () {",
+											"    pm.expect(responseJson.message == \"Invalid argument email. Object didn't pass validation for format email: @comcate.com\").to.be.true;",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\":\"@comcate.com\",\n\t\"password\":\"test@123\"\n}"
+								},
+								"url": {
+									"raw": "{{env}}/admin/login",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"admin",
+										"login"
+									]
+								},
+								"description": "Login to the server and fetch the token into env variables"
+							},
+							"response": []
+						},
+						{
+							"name": "Comcate Admin Login - Invalid Password",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8e921c9f-a70b-49f2-a721-426463c234f7",
+										"exec": [
+											"var responseJson = JSON.parse(responseBody);",
+											"",
+											"pm.test(\"Status code is 401\", function () {",
+											"    pm.response.to.have.status(401);",
+											"});",
+											"",
+											"pm.test(\"Error Message shows password mismatch\", function () {",
+											"    pm.expect(responseJson.message == \"Password did not match.\").to.be.true;",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\":\"support@comcate.com\",\n\t\"password\":\"123\"\n}"
+								},
+								"url": {
+									"raw": "{{env}}/admin/login",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"admin",
+										"login"
+									]
+								},
+								"description": "Login to the server and fetch the token into env variables"
+							},
+							"response": []
+						},
+						{
+							"name": "Comcate Admin Login - Valid Values",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "dee55f02-f871-4e22-b27f-209c2a2c9ddf",
+										"exec": [
+											"var responseJson = JSON.parse(responseBody);",
+											"",
+											"pm.environment.set(\"auth_token\",\"Bearer \"+responseJson.token);",
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Token is not null\", function () {",
+											"    pm.expect(responseJson.token!== null).to.be.true;",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\":\"support@comcate.com\",\n\t\"password\":\"test@123\"\n}"
+								},
+								"url": {
+									"raw": "{{env}}/admin/login",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"admin",
+										"login"
+									]
+								},
+								"description": "Login to the server and fetch the token into env variables"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "System Icons",
+					"item": [
+						{
+							"name": "Add System Icon - Animal",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "31c6fb0f-9178-4c5a-b696-a8a4eaef60e0",
+										"type": "text/javascript",
+										"exec": [
+											"var responseJson = JSON.parse(responseBody);",
+											"",
+											"pm.test(\"Status code validation\", function () {",
+											"    if(responseCode.code === 409){",
+											"        pm.expect(responseJson.message).to.eql(\"System icon exists already.\");",
+											"    }else{",
+											"        pm.response.to.have.status(201);",
+											"        postman.setEnvironmentVariable(\"iconId\",responseJson.id);",
+											"        pm.expect(responseJson.id).to.not.eql(null);",
+											"        var assetDomain = pm.environment.get(\"s3_bucket_domain\");",
+											"        pm.expect(responseJson.fileUrl).to.eql(assetDomain+\"/agency_0/system_icon/animal.png\");",
+											"        pm.expect(responseJson.isAvailableForUse).to.eql(true);",
+											"    }",
+											"});",
+											"",
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"fileUrl\":\"{{s3_bucket_domain}}/agency_0/staging/system_icon/animal.png\"\n}"
+								},
+								"url": {
+									"raw": "{{env}}/admin/system-icons",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"admin",
+										"system-icons"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add System Icon - Vehicle",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "863fde04-1a53-44d6-8f72-b06b13be148a",
+										"exec": [
+											"var responseJson = JSON.parse(responseBody);",
+											"",
+											"pm.test(\"Status code validation\", function () {",
+											"    if(responseCode.code === 409){",
+											"        pm.expect(responseJson.message).to.eql(\"System icon exists already.\");",
+											"    }else{",
+											"        pm.response.to.have.status(201);",
+											"        postman.setEnvironmentVariable(\"iconId\",responseJson.id);",
+											"        pm.expect(responseJson.id).to.not.eql(null);",
+											"        var assetDomain = pm.environment.get(\"s3_bucket_domain\");",
+											"        pm.expect(responseJson.fileUrl).to.eql(assetDomain+\"/agency_0/system_icon/vehicle.png\");",
+											"        pm.expect(responseJson.isAvailableForUse).to.eql(true);",
+											"    }",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"fileUrl\":\"{{s3_bucket_domain}}/agency_0/staging/system_icon/vehicle.png\"\n}"
+								},
+								"url": {
+									"raw": "{{env}}/admin/system-icons",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"admin",
+										"system-icons"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add System Icon - Others",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f63df8c7-31f9-4370-adca-2c4bab288464",
+										"exec": [
+											"var responseJson = JSON.parse(responseBody);",
+											"",
+											"pm.test(\"Status code validation\", function () {",
+											"    if(responseCode.code === 409){",
+											"        pm.expect(responseJson.message).to.eql(\"System icon exists already.\");",
+											"    }else{",
+											"        pm.response.to.have.status(201);",
+											"        postman.setEnvironmentVariable(\"iconId\",responseJson.id);",
+											"        pm.expect(responseJson.id).to.not.eql(null);",
+											"        var assetDomain = pm.environment.get(\"s3_bucket_domain\");",
+											"        pm.expect(responseJson.fileUrl).to.eql(assetDomain+\"/agency_0/system_icon/others.png\");",
+											"        pm.expect(responseJson.isAvailableForUse).to.eql(true);",
+											"    }",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"fileUrl\":\"{{s3_bucket_domain}}/agency_0/staging/system_icon/others.png\"\n}"
+								},
+								"url": {
+									"raw": "{{env}}/admin/system-icons",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"admin",
+										"system-icons"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add System Icon - Light",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "0e6470e8-c2ab-4e55-84b2-47e3f26ca9af",
+										"exec": [
+											"var responseJson = JSON.parse(responseBody);",
+											"",
+											"pm.test(\"Status code validation\", function () {",
+											"    if(responseCode.code === 409){",
+											"        pm.expect(responseJson.message).to.eql(\"System icon exists already.\");",
+											"    }else{",
+											"        pm.response.to.have.status(201);",
+											"        postman.setEnvironmentVariable(\"iconId\",responseJson.id);",
+											"        pm.expect(responseJson.id).to.not.eql(null);",
+											"        var assetDomain = pm.environment.get(\"s3_bucket_domain\");",
+											"        pm.expect(responseJson.fileUrl).to.eql(assetDomain+\"/agency_0/system_icon/light.png\");",
+											"        pm.expect(responseJson.isAvailableForUse).to.eql(true);",
+											"    }",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"fileUrl\":\"{{s3_bucket_domain}}/agency_0/staging/system_icon/light.png\"\n}"
+								},
+								"url": {
+									"raw": "{{env}}/admin/system-icons",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"admin",
+										"system-icons"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add System Icon - Grafitti",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "fd973628-a9f8-4ec8-b43d-d44c70b85156",
+										"exec": [
+											"var responseJson = JSON.parse(responseBody);",
+											"",
+											"pm.test(\"Status code validation\", function () {",
+											"    if(responseCode.code === 409){",
+											"        pm.expect(responseJson.message).to.eql(\"System icon exists already.\");",
+											"    }else{",
+											"        pm.response.to.have.status(201);",
+											"        postman.setEnvironmentVariable(\"iconId\",responseJson.id);",
+											"        pm.expect(responseJson.id).to.not.eql(null);",
+											"        var assetDomain = pm.environment.get(\"s3_bucket_domain\");",
+											"        pm.expect(responseJson.fileUrl).to.eql(assetDomain+\"/agency_0/system_icon/graffiti.png\");",
+											"        pm.expect(responseJson.isAvailableForUse).to.eql(true);",
+											"    }",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"fileUrl\":\"{{s3_bucket_domain}}/agency_0/staging/system_icon/graffiti.png\"\n}"
+								},
+								"url": {
+									"raw": "{{env}}/admin/system-icons",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"admin",
+										"system-icons"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add System Icon - General",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "ac65accb-4098-40b2-9d7a-72516bf59313",
+										"exec": [
+											"var responseJson = JSON.parse(responseBody);",
+											"",
+											"pm.test(\"Status code validation\", function () {",
+											"    if(responseCode.code === 409){",
+											"        pm.expect(responseJson.message).to.eql(\"System icon exists already.\");",
+											"    }else{",
+											"        pm.response.to.have.status(201);",
+											"        postman.setEnvironmentVariable(\"iconId\",responseJson.id);",
+											"        pm.expect(responseJson.id).to.not.eql(null); ",
+											"        var assetDomain = pm.environment.get(\"s3_bucket_domain\")",
+											"        pm.expect(responseJson.fileUrl).to.eql(assetDomain+\"/agency_0/system_icon/general.png\");",
+											"        pm.expect(responseJson.isAvailableForUse).to.eql(true);",
+											"    }",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"fileUrl\":\"{{s3_bucket_domain}}/agency_0/staging/system_icon/general.png\"\n}"
+								},
+								"url": {
+									"raw": "{{env}}/admin/system-icons",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"admin",
+										"system-icons"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add System Icon - Invalid URL - Animal Icon",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "342d9304-950d-46bc-a3b0-d55ff36a2cd8",
+										"type": "text/javascript",
+										"exec": [
+											"var responseJson = JSON.parse(responseBody);",
+											"",
+											"pm.test(\"Error Message shows invalid file URL\", function () {",
+											"    pm.expect(responseJson.message == \"File URL is incorrect\").to.be.true;",
+											"});",
+											"",
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"fileUrl\":\"comcate.com/agency_0/staging/system_icon/animal.png\"\n}"
+								},
+								"url": {
+									"raw": "{{env}}/admin/system-icons",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"admin",
+										"system-icons"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all System Icons",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "6f4606f5-ab19-4905-b471-dcaee0d28937",
+										"exec": [
+											"var responseJson = JSON.parse(responseBody);",
+											"",
+											"pm.test(\"Status code validation\", function () {",
+											"        pm.response.to.have.status(200);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{auth_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{env}}/admin/system-icons",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"admin",
+										"system-icons"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get available system icons",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d2116322-1406-4c62-a01c-dc75fcc5f1a5",
+										"exec": [
+											"var responseJson = JSON.parse(responseBody);",
+											"",
+											"pm.test(\"Status code validation\", function () {",
+											"        pm.response.to.have.status(200);",
+											"});",
+											"",
+											"var schema ={",
+											"  \"definitions\": {},",
+											"  \"$schema\": \"http://json-schema.org/draft-07/schema#\",",
+											"  \"$id\": \"http://example.com/root.json\",",
+											"  \"type\": \"array\",",
+											"  \"items\": {",
+											"    \"$id\": \"#/items\",",
+											"    \"type\": \"object\",",
+											"    \"required\": [",
+											"      \"id\",",
+											"      \"fileUrl\",",
+											"      \"isAvailableForUse\"",
+											"    ],",
+											"    \"properties\": {",
+											"      \"id\": {",
+											"        \"$id\": \"#/items/properties/id\",",
+											"        \"type\": \"integer\"",
+											"      },",
+											"      \"fileUrl\": {",
+											"        \"$id\": \"#/items/properties/fileUrl\",",
+											"        \"type\": \"string\",",
+											"        \"pattern\": \"^(.*)$\"",
+											"      },",
+											"      \"isAvailableForUse\": {",
+											"        \"$id\": \"#/items/properties/isAvailableForUse\",",
+											"        \"type\": \"boolean\"",
+											"      }",
+											"    }",
+											"  }",
+											"};",
+											"",
+											"pm.test('Schema is valid', function() {",
+											"    var Ajv = require('ajv'),",
+											"        ajv = new Ajv({",
+											"            logger: console,",
+											"            allErrors: true",
+											"        });",
+											"    pm.expect(ajv.validate(schema, responseJson), JSON.stringify(ajv.errors)).to.be.true;",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{auth_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{env}}/admin/available-system-icons",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"admin",
+										"available-system-icons"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Violation Types",
+					"item": [
+						{
+							"name": "Create a System Violation Type - Label More than max length",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "3d5704e4-1aca-4146-b170-d1b410b23f34",
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"",
+											"",
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([400]);",
+											"});",
+											"",
+											"pm.test(\"Response must be Valid and have a Body\", function () {",
+											"     pm.response.to.be.withBody;",
+											"     pm.response.to.be.json;",
+											"});",
+											"",
+											"pm.test(\"Label is not accepted\", function(){",
+											"pm.expect(jsonData.message).to.equal(\"Invalid argument label. String is too long (68 chars), maximum 10\");",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"label\": \"Fire label with more than max length of 10 chars which is not needed\",\n  \"iconId\": 1,\n  \"isAvailableForActivation\": true,\n  \"isCustom\": true\n}"
+								},
+								"url": {
+									"raw": "{{env}}/admin/system-xerce-violation-types",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"admin",
+										"system-xerce-violation-types"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create a System Violation Type - Empty Label",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "3d5704e4-1aca-4146-b170-d1b410b23f34",
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"",
+											"",
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([400]);",
+											"});",
+											"",
+											"pm.test(\"Response must be Valid and have a Body\", function () {",
+											"     pm.response.to.be.withBody;",
+											"     pm.response.to.be.json;",
+											"});",
+											"",
+											"pm.test(\"Label is not accepted\", function(){",
+											"pm.expect(jsonData.message).to.equal(\"Invalid argument label. String is too short (0 chars), minimum 1\");",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"label\": \"\",\n  \"iconId\": 1,\n  \"isAvailableForActivation\": true,\n  \"isCustom\": true\n}"
+								},
+								"url": {
+									"raw": "{{env}}/admin/system-xerce-violation-types",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"admin",
+										"system-xerce-violation-types"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create a System Violation Type - Invalid isCustom field",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "3d5704e4-1aca-4146-b170-d1b410b23f34",
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"",
+											"",
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([400]);",
+											"});",
+											"",
+											"pm.test(\"Response must be Valid and have a Body\", function () {",
+											"     pm.response.to.be.withBody;",
+											"     pm.response.to.be.json;",
+											"});",
+											"",
+											"pm.test(\"Label is not accepted\", function(){",
+											"pm.expect(jsonData.message).to.equal(\"Invalid argument isCustom. Expected type boolean but found type string\");",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"label\": \"Fire\",\n  \"iconId\": 1,\n  \"isAvailableForActivation\": true,\n  \"isCustom\": \"true\"\n}"
+								},
+								"url": {
+									"raw": "{{env}}/admin/system-xerce-violation-types",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"admin",
+										"system-xerce-violation-types"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create a System Violation Type - Invalid isAvailableForActivation field",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "3d5704e4-1aca-4146-b170-d1b410b23f34",
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"",
+											"",
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([400]);",
+											"});",
+											"",
+											"pm.test(\"Response must be Valid and have a Body\", function () {",
+											"     pm.response.to.be.withBody;",
+											"     pm.response.to.be.json;",
+											"});",
+											"",
+											"pm.test(\"Label is not accepted\", function(){",
+											"pm.expect(jsonData.message).to.equal(\"Invalid argument isAvailableForActivation. Expected type boolean but found type string\");",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"label\": \"Fire\",\n    \"iconId\": 1,\n    \"isAvailableForActivation\": \"true\",\n    \"isCustom\": true\n}"
+								},
+								"url": {
+									"raw": "{{env}}/admin/system-xerce-violation-types",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"admin",
+										"system-xerce-violation-types"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create a System Violation  - Custom",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "0ceabdea-ea85-4e78-a1f9-5345ebd6c9c1",
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"var Ajv = require('ajv'),",
+											"    ajv = new Ajv({logger: console, allErrors: true});",
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201,202]);",
+											"});",
+											"",
+											"pm.test(\"Response must be Valid and have a Body\", function () {",
+											"     pm.response.to.be.withBody;",
+											"     pm.response.to.be.json;",
+											"});",
+											"",
+											"",
+											"var schema = {",
+											"  \"definitions\": {},",
+											"  \"$schema\": \"http://json-schema.org/draft-07/schema#\",",
+											"  \"$id\": \"http://example.com/root.json\",",
+											"  \"type\": \"object\",",
+											"  \"properties\": {",
+											"    \"id\": {",
+											"      \"type\": \"integer\"",
+											"    },",
+											"    \"label\": {",
+											"      \"type\": \"string\"",
+											"    },",
+											"    \"iconUrl\": {",
+											"      \"type\": \"string\"",
+											"    },",
+											"    \"isAvailableForActivation\": {",
+											"      \"type\": \"boolean\"",
+											"    },",
+											"    \"isCustom\": {",
+											"      \"type\": \"boolean\"",
+											"    },",
+											"    \"associatedEntitySectionName\": {",
+											"      \"type\": \"null\"",
+											"    }",
+											"  }",
+											"};",
+											"",
+											"pm.test('Schema is valid', function() {",
+											"    pm.expect(ajv.validate(schema, jsonData), JSON.stringify(ajv.errors)).to.be.true;",
+											"});",
+											"",
+											"pm.test('Available for Activation true', function() {",
+											"  pm.expect(jsonData.isAvailableForActivation).to.equal(true);",
+											"});",
+											"",
+											"",
+											"pm.test('Validate if custom', function() {",
+											"  pm.expect(jsonData.isCustom).to.equal(true);",
+											"});",
+											"",
+											"pm.test('Validate id not null', function() {",
+											"  pm.expect(jsonData.id).to.not.equal(null);",
+											"});",
+											"",
+											"pm.test('Validate Label is correct', function() {",
+											"  pm.expect(jsonData.label).to.equal(\"Fire\");",
+											"});",
+											"",
+											"pm.environment.set(\"custom_vt_icon_id\", jsonData.id);",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"label\": \"Fire\",\n  \"iconId\": 4,\n  \"isAvailableForActivation\": true,\n  \"isCustom\": true\n}"
+								},
+								"url": {
+									"raw": "{{env}}/admin/system-xerce-violation-types",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"admin",
+										"system-xerce-violation-types"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create a System Violation - System",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "0ceabdea-ea85-4e78-a1f9-5345ebd6c9c1",
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"var Ajv = require('ajv'),",
+											"    ajv = new Ajv({logger: console, allErrors: true});",
+											"",
+											"pm.environment.set(\"system_vt_icon_id\", jsonData.id);",
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201,202]);",
+											"});",
+											"",
+											"pm.test(\"Response must be Valid and have a Body\", function () {",
+											"     pm.response.to.be.withBody;",
+											"     pm.response.to.be.json;",
+											"});",
+											"",
+											"var schema = {",
+											"  \"definitions\": {},",
+											"  \"$schema\": \"http://json-schema.org/draft-07/schema#\",",
+											"  \"$id\": \"http://example.com/root.json\",",
+											"  \"type\": \"object\",",
+											"  \"properties\": {",
+											"    \"id\": {",
+											"      \"type\": \"integer\"",
+											"    },",
+											"    \"label\": {",
+											"      \"type\": \"string\"",
+											"    },",
+											"    \"iconUrl\": {",
+											"      \"type\": \"string\"",
+											"    },",
+											"    \"isAvailableForActivation\": {",
+											"      \"type\": \"boolean\"",
+											"    },",
+											"    \"isCustom\": {",
+											"      \"type\": \"boolean\"",
+											"    },",
+											"    \"associatedEntitySectionName\": {",
+											"      \"type\": \"null\"",
+											"    }",
+											"  }",
+											"}",
+											"",
+											"",
+											"pm.test('Schema is valid', function() {",
+											"    pm.expect(ajv.validate(schema, jsonData), JSON.stringify(ajv.errors)).to.be.true",
+											"});",
+											"",
+											"pm.test('Available for Activation true', function() {",
+											"  pm.expect(jsonData.isAvailableForActivation).to.equal(true);",
+											"});",
+											"",
+											"",
+											"pm.test('Validate if custom', function() {",
+											"  pm.expect(jsonData.isCustom).to.equal(false);",
+											"});",
+											"",
+											"pm.test('Validate id not null', function() {",
+											"  pm.expect(jsonData.id).to.not.equal(null);",
+											"});",
+											"",
+											"pm.test('Validate Label is correct', function() {",
+											"  pm.expect(jsonData.label).to.equal(\"Nuisanse\");",
+											"});",
+											"",
+											"pm.environment.set(\"system_vt_icon_id\", jsonData.id);",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"label\": \"Nuisanse\",\n  \"iconId\": 5,\n  \"isAvailableForActivation\": true,\n  \"isCustom\": false\n}"
+								},
+								"url": {
+									"raw": "{{env}}/admin/system-xerce-violation-types",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"admin",
+										"system-xerce-violation-types"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create a System Violation Type - Duplicate Label",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "99255882-3011-4aba-8c36-5e5a5306ce3e",
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"",
+											"pm.test(\"Status code is 409\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([409]);",
+											"});",
+											"",
+											"pm.test(\"Response must be Valid and have a Body\", function () {",
+											"     pm.response.to.be.withBody;",
+											"     pm.response.to.be.json;",
+											"});",
+											"",
+											"pm.test('Error for duplicate', function() {",
+											"  pm.expect(jsonData.message).to.equal(\"Violation type exists already.\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"label\": \"Fire\",\n  \"iconId\": 6,\n  \"isAvailableForActivation\": true,\n  \"isCustom\": true\n}"
+								},
+								"url": {
+									"raw": "{{env}}/admin/system-xerce-violation-types",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"admin",
+										"system-xerce-violation-types"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create a System Violation Type - No icon found",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "3962f703-8eaf-486c-92ed-f1d80909502d",
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"",
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([400]);",
+											"});",
+											"",
+											"pm.test(\"Response must be Valid and have a Body\", function () {",
+											"     pm.response.to.be.withBody;",
+											"     pm.response.to.be.json;",
+											"});",
+											"",
+											"pm.test('Icon not found', function() {",
+											"  pm.expect(jsonData.message).to.equal(\"No such system icon found\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"label\": \"Water\",\n  \"iconId\": 787,\n  \"isAvailableForActivation\": true,\n  \"isCustom\": true\n}"
+								},
+								"url": {
+									"raw": "{{env}}/admin/system-xerce-violation-types",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"admin",
+										"system-xerce-violation-types"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create a System Violation Type - Icon not available",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "bc957e02-c8f5-45f0-bd4e-6d95023d1c8d",
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"",
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([400]);",
+											"});",
+											"",
+											"pm.test(\"Response must be Valid and have a Body\", function () {",
+											"     pm.response.to.be.withBody;",
+											"     pm.response.to.be.json;",
+											"});",
+											"",
+											"pm.test('Icon not found', function() {",
+											"  pm.expect(jsonData.message).to.equal(\"Violation icon is already in use\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"label\": \"Nuisance\",\n  \"iconId\": 4,\n  \"isAvailableForActivation\": true,\n  \"isCustom\": true\n}"
+								},
+								"url": {
+									"raw": "{{env}}/admin/system-xerce-violation-types",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"admin",
+										"system-xerce-violation-types"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create a System Violation Type - No Activation",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "011c5996-2a57-40ff-a87c-1cad267ae5cb",
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"var Ajv = require('ajv'),",
+											"    ajv = new Ajv({",
+											"        logger: console,",
+											"        allErrors: true",
+											"    });",
+											"    ",
+											"pm.test(\"Status code is 400\", function() {",
+											"    pm.expect(pm.response.code).to.be.oneOf([400]);",
+											"});",
+											"",
+											"pm.test(\"Response must be Valid and have a Body\", function() {",
+											"    pm.response.to.be.withBody;",
+											"    pm.response.to.be.json;",
+											"});",
+											"",
+											"var schema = {",
+											"    \"definitions\": {},",
+											"    \"$schema\": \"http://json-schema.org/draft-07/schema#\",",
+											"    \"$id\": \"http://example.com/root.json\",",
+											"    \"type\": \"object\",",
+											"    \"properties\": {",
+											"        \"id\": {",
+											"            \"type\": \"integer\"",
+											"        },",
+											"        \"label\": {",
+											"            \"type\": \"string\"",
+											"        },",
+											"        \"iconUrl\": {",
+											"            \"type\": \"string\"",
+											"        },",
+											"        \"isAvailableForActivation\": {",
+											"            \"type\": \"boolean\"",
+											"        },",
+											"        \"isCustom\": {",
+											"            \"type\": \"boolean\"",
+											"        },",
+											"        \"associatedEntitySectionName\": {",
+											"            \"type\": \"null\"",
+											"        }",
+											"    }",
+											"};",
+											"",
+											"pm.test('Schema is valid', function() {",
+											"    pm.expect(ajv.validate(schema, jsonData), JSON.stringify(ajv.errors)).to.be.true;",
+											"});",
+											"",
+											"pm.test('Error message is thrown for not available for activation', function() {",
+											"    pm.expect(jsonData.message).to.include(\"Violation Type should be Available for Activation\");",
+											"",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"label\": \"PNuisance\",\n  \"iconId\": 6,\n  \"isAvailableForActivation\": false,\n  \"isCustom\": true\n}"
+								},
+								"url": {
+									"raw": "{{env}}/admin/system-xerce-violation-types",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"admin",
+										"system-xerce-violation-types"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all violation types",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "abd57c55-64f4-4226-b207-1ad4b9cc5b61",
+										"type": "text/javascript",
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"var Ajv = require('ajv'),",
+											"    ajv = new Ajv({",
+											"        logger: console,",
+											"        allErrors: true",
+											"    });",
+											"    ",
+											"var schema = {",
+											"    \"definitions\": {},",
+											"    \"$schema\": \"http://json-schema.org/draft-07/schema#\",",
+											"    \"$id\": \"http://example.com/root.json\",",
+											"    \"type\": \"array\",",
+											"    \"items\": {",
+											"        \"type\": \"object\",",
+											"        \"properties\": {",
+											"            \"id\": {",
+											"                \"type\": \"integer\"",
+											"            },",
+											"            \"label\": {",
+											"                \"type\": \"string\"",
+											"            },",
+											"            \"iconUrl\": {",
+											"                \"type\": \"string\"",
+											"            },",
+											"            \"isAvailableForActivation\": {",
+											"                \"type\": \"boolean\"",
+											"            },",
+											"            \"isCustom\": {",
+											"                \"type\": \"boolean\"",
+											"            },",
+											"            \"associatedEntitySectionName\": {",
+											"                \"type\": [\"string\", \"null\"]",
+											"            }",
+											"        }",
+											"    }",
+											"};",
+											"",
+											"pm.test(\"Response must be Valid and have a Body\", function() {",
+											"    pm.response.to.be.withBody;",
+											"    pm.response.to.be.json;",
+											"});",
+											"",
+											"pm.test('Schema is valid', function() {",
+											"    pm.expect(ajv.validate(schema, jsonData)).to.be.true;",
+											"",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{auth_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{env}}/admin/system-xerce-violation-types",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"admin",
+										"system-xerce-violation-types"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Edit Custom Violation Type",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d44dcb52-9ecc-4185-b10d-f9737c494151",
+										"type": "text/javascript",
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"var Ajv = require('ajv'),",
+											"    ajv = new Ajv({",
+											"        logger: console,",
+											"        allErrors: true",
+											"    });",
+											"var jsonData = pm.response.json();",
+											"",
+											"var schema = {",
+											"    \"definitions\": {},",
+											"    \"$schema\": \"http://json-schema.org/draft-07/schema#\",",
+											"    \"$id\": \"http://example.com/root.json\",",
+											"    \"type\": \"object\",",
+											"    \"properties\": {",
+											"        \"id\": {",
+											"            \"type\": \"integer\"",
+											"        },",
+											"        \"label\": {",
+											"            \"type\": \"string\"",
+											"        },",
+											"        \"iconUrl\": {",
+											"            \"type\": \"string\"",
+											"        },",
+											"        \"isAvailableForActivation\": {",
+											"            \"type\": \"boolean\"",
+											"        },",
+											"        \"isCustom\": {",
+											"            \"type\": \"boolean\"",
+											"        },",
+											"        \"associatedEntitySectionName\": {",
+											"            \"type\": \"null\"",
+											"        }",
+											"    }",
+											"}",
+											"",
+											"pm.test('Schema is valid', function() {",
+											"    pm.expect(ajv.validate(schema, jsonData)).to.be.true;",
+											"",
+											"});",
+											"",
+											"pm.test(\"Label is modified\", function() {",
+											"    pm.expect(jsonData.label).to.equal(\"FireTwo\");",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"label\": \"FireTwo\",\n  \"iconId\": 4\n}"
+								},
+								"url": {
+									"raw": "{{env}}/admin/system-xerce-violation-types/{{custom_vt_icon_id}}",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"admin",
+										"system-xerce-violation-types",
+										"{{custom_vt_icon_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Edit Custom Violation Type - Change Icon",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "fc9b799a-0c5d-477b-a5c2-07cf518c75f7",
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"",
+											"",
+											"pm.test(\"Icon not accepted\", function(){",
+											"    pm.expect(jsonData.message).to.equal(\"Violation icon is already in use\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"label\": \"FireTwo\",\n  \"iconId\": 5\n}"
+								},
+								"url": {
+									"raw": "{{env}}/admin/system-xerce-violation-types/{{custom_vt_icon_id}}",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"admin",
+										"system-xerce-violation-types",
+										"{{custom_vt_icon_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Edit System Violation Type - Change icon(Negative)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "67560039-ae28-4bfe-978b-3c910e58285a",
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"",
+											"pm.test(\"Error message should be thrown\", function(){",
+											"    pm.expect(jsonData.message).to.equal(\"No such system icon found\");",
+											"});",
+											"",
+											"pm.test(\"Status code validation\", function(){",
+											"   pm.response.to.have.status(400);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"label\": \"Animal C\",\n  \"iconId\": 66\n}"
+								},
+								"url": {
+									"raw": "{{env}}/admin/system-xerce-violation-types/{{custom_vt_icon_id}}",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"admin",
+										"system-xerce-violation-types",
+										"{{custom_vt_icon_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Edit System Violation Type - More than max length",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d834630a-d832-47ca-97cc-eb06f4915715",
+										"exec": [
+											"var Ajv = require('ajv'),",
+											"    ajv = new Ajv({",
+											"        logger: console,",
+											"        allErrors: true",
+											"    });",
+											"var jsonData = pm.response.json();",
+											"",
+											"pm.test(\"Status code is 400\", function() {",
+											"    pm.expect(pm.response.code).to.be.oneOf([400]);",
+											"});",
+											"",
+											"",
+											"var schema = {",
+											"    \"definitions\": {},",
+											"    \"$schema\": \"http://json-schema.org/draft-07/schema#\",",
+											"    \"$id\": \"http://example.com/root.json\",",
+											"    \"type\": \"object\",",
+											"    \"properties\": {",
+											"        \"id\": {",
+											"            \"type\": \"integer\"",
+											"        },",
+											"        \"label\": {",
+											"            \"type\": \"string\"",
+											"        },",
+											"        \"iconUrl\": {",
+											"            \"type\": \"string\"",
+											"        },",
+											"        \"isAvailableForActivation\": {",
+											"            \"type\": \"boolean\"",
+											"        },",
+											"        \"isCustom\": {",
+											"            \"type\": \"boolean\"",
+											"        },",
+											"        \"associatedEntitySectionName\": {",
+											"            \"type\": [\"string\", \"null\"]",
+											"        }",
+											"    }",
+											"}",
+											"pm.test('Schema is valid', function() {",
+											"    pm.expect(ajv.validate(schema, jsonData), JSON.stringify(ajv.errors)).to.be.true;",
+											"});",
+											"pm.test(\"Label is not accepted\", function() {",
+											"    pm.expect(jsonData.message).to.equal(\"Invalid argument label. String is too long (53 chars), maximum 10\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"label\": \"Fire Violation label which is more than 50 charecters\",\n  \"iconId\": 4\n}"
+								},
+								"url": {
+									"raw": "{{env}}/admin/system-xerce-violation-types/{{custom_vt_icon_id}}",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"admin",
+										"system-xerce-violation-types",
+										"{{custom_vt_icon_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Edit Custom Violation - Make it a System VT",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "cb902161-740f-4227-84bf-4a5be16003f4",
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"var Ajv = require('ajv'),",
+											"    ajv = new Ajv({logger: console, allErrors: true});",
+											"    ",
+											"var schema = {",
+											"  \"definitions\": {},",
+											"  \"$schema\": \"http://json-schema.org/draft-07/schema#\",",
+											"  \"$id\": \"http://example.com/root.json\",",
+											"  \"type\": \"object\",",
+											"  \"properties\": {",
+											"    \"id\": {",
+											"      \"type\": \"integer\"",
+											"    },",
+											"    \"label\": {",
+											"      \"type\": \"string\"",
+											"    },",
+											"    \"iconUrl\": {",
+											"      \"type\": \"string\"",
+											"    },",
+											"    \"isAvailableForActivation\": {",
+											"      \"type\": \"boolean\"",
+											"    },",
+											"    \"isCustom\": {",
+											"      \"type\": \"boolean\"",
+											"    },",
+											"    \"associatedEntitySectionName\": {",
+											"      \"type\": \"null\"",
+											"    }",
+											"  }",
+											"};",
+											"",
+											"pm.test('Schema is valid', function() {",
+											"    pm.expect(ajv.validate(schema, jsonData), JSON.stringify(ajv.errors)).to.be.true;",
+											"});",
+											"",
+											"pm.test(\"Label is modified\", function(){",
+											"    pm.expect(jsonData.label).to.equal(\"FireTwo\");",
+											"});",
+											"",
+											"pm.test(\"isCustom not affected\", function(){",
+											"    pm.expect(jsonData.isCustom).to.equal(true);",
+											"});",
+											"",
+											"pm.test(\"isAvailableForActivation not affected\", function(){",
+											"    pm.expect(jsonData.isAvailableForActivation).to.equal(true);",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"label\": \"FireTwo\",\n  \"iconId\": 4,\n  \"isCustom\": false,\n  \"isAvailableForActivation\":false\n}"
+								},
+								"url": {
+									"raw": "{{env}}/admin/system-xerce-violation-types/{{custom_vt_icon_id}}",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"admin",
+										"system-xerce-violation-types",
+										"{{custom_vt_icon_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Custom Violation",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "48680083-97af-43b9-90a6-2729200d70ac",
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"",
+											"var Ajv = require('ajv'),",
+											"    ajv = new Ajv({logger: console, allErrors: true});",
+											"",
+											"var schema =   {",
+											"  \"definitions\": {},",
+											"  \"$schema\": \"http://json-schema.org/draft-07/schema#\",",
+											"  \"type\": \"object\",",
+											"  \"required\": [",
+											"    \"id\",",
+											"    \"label\",",
+											"    \"iconUrl\",",
+											"    \"isAvailableForActivation\",",
+											"    \"isCustom\",",
+											"    \"associatedEntitySectionName\"",
+											"  ],",
+											"  \"properties\": {",
+											"    \"id\": {",
+											"      \"type\": \"integer\"",
+											"    },",
+											"    \"label\": {",
+											"      \"type\": \"string\",",
+											"      \"pattern\": \"^[a-zA-Z]+[ a-zA-Z]*$\"",
+											"    },",
+											"    \"iconUrl\": {",
+											"      \"type\": \"string\",",
+											"    },",
+											"    \"isAvailableForActivation\": {",
+											"      \"type\": \"boolean\"",
+											"    },",
+											"    \"isCustom\": {",
+											"      \"type\": \"boolean\"",
+											"    },",
+											"    \"associatedEntitySectionName\": {",
+											"      \"type\": [\"string\",\"null\"]",
+											"    }",
+											"  }",
+											"};",
+											"",
+											"pm.test('Validate Label is correct', function() {",
+											"  pm.expect(jsonData.label).to.equal(\"FireTwo\");",
+											"});",
+											"",
+											"pm.test('Validate iconUrl is correct', function() {",
+											"  pm.expect(jsonData.iconUrl).to.equal(pm.environment.get(\"s3_bucket_domain\")+\"/agency_0/system_icon/light.png\");",
+											"});",
+											"",
+											"pm.test(\"isCustom\", function(){",
+											"    pm.expect(jsonData.isCustom).to.equal(true);",
+											"});",
+											"",
+											"pm.test(\"isAvailableForActivation\", function(){",
+											"    pm.expect(jsonData.isAvailableForActivation).to.equal(true);",
+											"});",
+											"",
+											"pm.test(\"associatedEntitySectionName\", function(){",
+											"    pm.expect(jsonData.associatedEntitySectionName).to.equal(null);",
+											"});",
+											"",
+											"pm.test('Schema is valid', function() {",
+											"    pm.expect(ajv.validate(schema, jsonData), JSON.stringify(ajv.errors)).to.be.true",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{auth_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{env}}/admin/system-xerce-violation-types/{{custom_vt_icon_id}}",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"admin",
+										"system-xerce-violation-types",
+										"{{custom_vt_icon_id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "CDBG Upload",
+					"item": [
+						{
+							"name": "Upload a CDBG File - Empty path",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a90c9c44-90c1-410e-a5f5-a5a257d8c025",
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"",
+											"pm.test(\"Incorrect file Error message should be thrown\", function() {",
+											"    pm.expect(jsonData.message).to.eql(\"Shapefile was not provided\");",
+											"});",
+											"",
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "shapefile",
+											"type": "file",
+											"src": "{{cdbg_empty_path}}"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{env}}/admin/gis/layers/cdbg",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"admin",
+										"gis",
+										"layers",
+										"cdbg"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Upload a CDBG File - Without File",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a90c9c44-90c1-410e-a5f5-a5a257d8c025",
+										"exec": [
+											"pm.test(\"Status code is 500\", function () {",
+											"    pm.response.to.have.status(500);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{env}}/admin/gis/layers/cdbg",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"admin",
+										"gis",
+										"layers",
+										"cdbg"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Upload a CDBG File - No Zip file",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a90c9c44-90c1-410e-a5f5-a5a257d8c025",
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"",
+											"pm.test(\"Incorrect file Error message should be thrown\", function(){",
+											"    pm.expect(jsonData.message).to.eql(\"Shape file should have .zip extension.\");",
+											"});",
+											"",
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "shapefile",
+											"type": "file",
+											"src": "/home/velotio/cyberdyne/server/test/api/API_test_v3/test_Data/no_zip_file_cdbg.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{env}}/admin/gis/layers/cdbg",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"admin",
+										"gis",
+										"layers",
+										"cdbg"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Upload a CDBG File - Invalid CDBG file",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a90c9c44-90c1-410e-a5f5-a5a257d8c025",
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"",
+											"pm.test(\"Incorrect file Error message should be thrown\", function() {",
+											"    pm.expect(jsonData.message).to.eql(\"Invalid argument shapefile. It is not a valid file.\");",
+											"});",
+											"",
+											"pm.test(\"Status code is 400\", function() {",
+											"    pm.response.to.have.status(400);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "shapefile",
+											"type": "file",
+											"src": "/home/velotio/cyberdyne/server/test/api/API_test_v3/test_Data/cdbgFile_invalid.zip"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{env}}/admin/gis/layers/cdbg",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"admin",
+										"gis",
+										"layers",
+										"cdbg"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Upload a CDBG File - Valid file",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a90c9c44-90c1-410e-a5f5-a5a257d8c025",
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"",
+											"console.log(JSON.stringify(jsonData, null, 2));",
+											"",
+											"pm.test(\"Message should be OK\", function(){",
+											"    pm.expect(jsonData.message).to.eql(\"OK\");",
+											"});",
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "shapefile",
+											"type": "file",
+											"src": "/home/velotio/cyberdyne/server/test/api/API_test_v3/test_Data/cdbg_data.gdb.zip"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{env}}/admin/gis/layers/cdbg",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"admin",
+										"gis",
+										"layers",
+										"cdbg"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get CDBG file",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a90c9c44-90c1-410e-a5f5-a5a257d8c025",
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"",
+											"console.log(JSON.stringify(jsonData, null, 2));",
+											"",
+											"pm.test(\"Validate CDBG filename\", function(){",
+											"    pm.expect(jsonData.fileName).to.eql(\"cdbg_data.gdb.zip\");",
+											"});",
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{auth_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{env}}/admin/gis/layers/cdbg",
+									"host": [
+										"{{env}}"
+									],
+									"path": [
+										"admin",
+										"gis",
+										"layers",
+										"cdbg"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		}
+	]
+}

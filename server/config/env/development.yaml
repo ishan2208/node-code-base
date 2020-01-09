@@ -1,0 +1,50 @@
+app:
+  uploadDir: './uploads/'
+db:
+  username: 'postgres'
+  password: 'password'
+  database: 'cyberdyne'
+  dialect: 'postgres'
+  port: 5432
+  host: '127.0.0.1'
+  logging: false
+  force: false
+  pool: {
+    max: 512,
+    min: 1,
+    idle: 10000,
+    acquire: 60000,
+  }
+jwt:
+  jwtSecret: ''
+  jwtSessionTimeOut: '6h'
+  saltRounds: 10
+geoserver:
+  url: http://localhost:8080/geoserver/rest
+  username: geoserver
+  password: password
+  workspace: cyberdyne
+  datastore: cyberdyne_pg
+  layerUrl: 'http://localhost:8080/geoserver/ows?'
+mapbox:
+  accessToken: ''
+  layers:
+    - name: streets
+      url: ''
+      checked: true
+    - name: satellite
+      url: ''
+      checked: false
+aws:
+  accessKeyToken: ''
+  secretKey: ''
+  region: ''
+  s3:
+    bucket: ''
+mailgun:
+  apiKey: ''
+  domain: ''
+  from: 'support@comcate.com'
+  templatePath: '/../../../../templates'
+ #  email expiry time in minutes
+  emailExpiryTime: '10'

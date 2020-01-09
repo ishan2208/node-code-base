@@ -1,0 +1,59 @@
+{
+	"id": "f5f865db-29db-4fb0-9d8b-7b5d4bbc3df1",
+	"name": "cyberdyne_test_data",
+	"values": [
+		{
+			"key": "env",
+			"value": "http://localhost:3000",
+			"enabled": true
+		},
+		{
+			"key": "auth_token",
+			"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZmlyc3ROYW1lIjoiQ29tY2F0ZSIsImxhc3ROYW1lIjoiQWRtaW4iLCJlbWFpbCI6InN1cHBvcnRAY29tY2F0ZS5jb20iLCJzY29wZXMiOnsiY29tY2F0ZUFkbWluIjp0cnVlfSwiaWF0IjoxNTc1Mjg2NzU4LCJleHAiOjE1NzUzMDgzNTgsImlzcyI6ImN5YmVyZHluZSJ9.GAUUT7hA8AlYhyl8o_WNAtz3Zf-qu37QK0--pNLf2mw",
+			"enabled": true
+		},
+		{
+			"key": "custom_vt_icon_id",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "system_vt_icon_id",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "iconId",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "s3_bucket_domain",
+			"value": "https://cyberdyne-dev.s3.amazonaws.com",
+			"enabled": true
+		},
+		{
+			"key": "cdbg_filepath",
+			"value": "../test_data/",
+			"enabled": true
+		},
+		{
+			"key": "cdbgFile_invalid",
+			"value": "../test_data/cdbgFile_invalid.zip",
+			"enabled": true
+		},
+		{
+			"key": "cdbg_empty_path",
+			"value": "abc/xyz.png",
+			"enabled": true
+		},
+		{
+			"key": "no_zip_file_cdbg",
+			"value": "../test_data/no_zip_file_cdbg.jpeg",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2019-12-02T14:05:26.051Z",
+	"_postman_exported_using": "Postman/7.12.0"
+}

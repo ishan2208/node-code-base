@@ -1,0 +1,1307 @@
+{
+	"info": {
+		"_postman_id": "f2fafe3a-4bae-40aa-b742-850a55b2fd08",
+		"name": "Comcate",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "System Icon",
+			"description": null,
+			"item": [
+				{
+					"name": "Add System Icon",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"fileUrl\":\"https://cyberdyne.s3.amazonawscomcomcomcomcomcomcomcomcom./agency_0/staging/system_icon/animal.png\"\n}"
+						},
+						"url": "http://{{host}}:3000/admin/system-icons"
+					},
+					"response": []
+				},
+				{
+					"name": "Get System Icon",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"animal\",\n\t\"fileName\":\"animal_paw\",\n\t\"fileSize\":\"10 KB\",\n\t\"fileURL\":\"https://cyberdyne-dev.s3.amazonaws.com/agency/staging/cases/download.jpeg\"\n}"
+						},
+						"url": "http://{{host}}:3000/admin/system-icons/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All System Icons",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"animal\",\n\t\"fileName\":\"animal_paw\",\n\t\"fileSize\":\"10 KB\",\n\t\"fileURL\":\"https://cyberdyne-dev.s3.amazonaws.com/agency/staging/cases/download.jpeg\"\n}"
+						},
+						"url": "http://{{host}}:3000/admin/system-icons"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Available System Icons",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"animal\",\n\t\"fileName\":\"animal_paw\",\n\t\"fileSize\":\"10 KB\",\n\t\"fileURL\":\"https://cyberdyne-dev.s3.amazonaws.com/agency/staging/cases/download.jpeg\"\n}"
+						},
+						"url": "http://{{host}}:3000/admin/available-system-icons"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "System Xerce Violation Type",
+			"description": null,
+			"item": [
+				{
+					"name": "Add System Xerce Violation Type",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"label\":\"Animal Control\",\n\t\"isAvailableForActivation\": true,\n\t\"iconId\": 1,\n\t\"isCustom\": false\n}"
+						},
+						"url": "http://{{host}}:3000/admin/system-xerce-violation-types"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All System Xerce Violation Types",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"Animal Control\",\n\t\"label\":\"Animal Control\",\n\t\"isAvailableForActivation\": true,\n\t\"iconId\": 1\n}"
+						},
+						"url": "http://{{host}}:3000/admin/system-xerce-violation-types"
+					},
+					"response": []
+				},
+				{
+					"name": "Get System Xerce Violation Type",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"Animal Control\",\n\t\"label\":\"Animal Control\",\n\t\"isAvailableForActivation\": true,\n\t\"iconId\": 1\n}"
+						},
+						"url": "http://{{host}}:3000/admin/system-xerce-violation-types/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "System Xerce Entity Section",
+			"description": null,
+			"item": [
+				{
+					"name": "Add System Xerce Entity Section",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"label\":\"Animal\",\n\t\"systemXerceViolationTypeId\":1,\n\t\"systemXerceEntityFields\":[\n\t\t{\n\t\t\t\"label\":\"Animal Colour\",\n\t\t\t\"type\":\"TEXT\",\n\t\t\t\"options\":[],\n\t\t\t\"sequence\":1,\n\t\t\t\"isMergeField\": true,\n\t\t\t\"isIncludedInEntityName\":true,\n\t\t\t\"isActive\":true\n\t\t},\n\t\t{\n\t\t\t\"label\":\"License Number\",\n\t\t\t\"type\":\"TEXT\",\n\t\t\t\"options\":[],\n\t\t\t\"sequence\":2,\n\t\t\t\"isMergeField\": true,\n\t\t\t\"isIncludedInEntityName\":true,\n\t\t\t\"isActive\":true\n\t\t},\n\t\t{\n\t\t\t\"label\":\"Age\",\n\t\t\t\"type\":\"NUMBER\",\n\t\t\t\"options\":[],\n\t\t\t\"sequence\":3,\n\t\t\t\"isMergeField\": true,\n\t\t\t\"isIncludedInEntityName\":true,\n\t\t\t\"isActive\":true\n\t\t},\n\t\t{\n\t\t\t\"label\":\"Breed\",\n\t\t\t\"type\":\"PICKLIST\",\n\t\t\t\"options\":[\"breedA\", \"breedB\", \"breedC\"],\n\t\t\t\"sequence\":4,\n\t\t\t\"isMergeField\": false,\n\t\t\t\"isIncludedInEntityName\":false,\n\t\t\t\"isActive\":true\n\t\t}\n\t]\n}"
+						},
+						"url": "http://{{host}}:3000/admin/system-xerce-entity-sections"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All System Xerce Entity Sections",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"Animal\",\n\t\"label\":\"Vehicle\",\n\t\"systemXerceViolationTypeId\":3,\n\t\"systemXerceEntityFields\":[\n\t\t{\n\t\t\t\"name\":\"entityName\",\n\t\t\t\"label\":\"entityLabel\",\n\t\t\t\"type\":\"TEXT\",\n\t\t\t\"options\":[],\n\t\t\t\"sequence\":1,\n\t\t\t\"isMergeField\": true,\n\t\t\t\"isIncludedInNameDisplay\":true,\n\t\t\t\"isActive\":true\n\t\t},\n\t\t{\n\t\t\t\"name\":\"License Number\",\n\t\t\t\"label\":\"License Number\",\n\t\t\t\"type\":\"TEXT\",\n\t\t\t\"options\":[],\n\t\t\t\"sequence\":2,\n\t\t\t\"isMergeField\": true,\n\t\t\t\"isIncludedInNameDisplay\":true,\n\t\t\t\"isActive\":true\n\t\t},\n\t\t{\n\t\t\t\"name\":\"Registration Number\",\n\t\t\t\"label\":\"Registration Number\",\n\t\t\t\"type\":\"NUMBER\",\n\t\t\t\"options\":[],\n\t\t\t\"sequence\":3,\n\t\t\t\"isMergeField\": true,\n\t\t\t\"isIncludedInNameDisplay\":true,\n\t\t\t\"isActive\":true\n\t\t},\n\t\t{\n\t\t\t\"name\":\"breed\",\n\t\t\t\"label\":\"breed\",\n\t\t\t\"type\":\"PICKLIST\",\n\t\t\t\"options\":[\"breedA\", \"breedB\", \"breedC\"],\n\t\t\t\"sequence\":4,\n\t\t\t\"isMergeField\": false,\n\t\t\t\"isIncludedInNameDisplay\":false,\n\t\t\t\"isActive\":true\n\t\t}\n\t]\n}"
+						},
+						"url": "http://{{host}}:3000/admin/system-xerce-entity-sections"
+					},
+					"response": []
+				},
+				{
+					"name": "Get System Xerce Entity Section",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"Animal\",\n\t\"label\":\"Vehicle\",\n\t\"systemXerceViolationTypeId\":3,\n\t\"systemXerceEntityFields\":[\n\t\t{\n\t\t\t\"name\":\"entityName\",\n\t\t\t\"label\":\"entityLabel\",\n\t\t\t\"type\":\"TEXT\",\n\t\t\t\"options\":[],\n\t\t\t\"sequence\":1,\n\t\t\t\"isMergeField\": true,\n\t\t\t\"isIncludedInNameDisplay\":true,\n\t\t\t\"isActive\":true\n\t\t},\n\t\t{\n\t\t\t\"name\":\"License Number\",\n\t\t\t\"label\":\"License Number\",\n\t\t\t\"type\":\"TEXT\",\n\t\t\t\"options\":[],\n\t\t\t\"sequence\":2,\n\t\t\t\"isMergeField\": true,\n\t\t\t\"isIncludedInNameDisplay\":true,\n\t\t\t\"isActive\":true\n\t\t},\n\t\t{\n\t\t\t\"name\":\"Registration Number\",\n\t\t\t\"label\":\"Registration Number\",\n\t\t\t\"type\":\"NUMBER\",\n\t\t\t\"options\":[],\n\t\t\t\"sequence\":3,\n\t\t\t\"isMergeField\": true,\n\t\t\t\"isIncludedInNameDisplay\":true,\n\t\t\t\"isActive\":true\n\t\t},\n\t\t{\n\t\t\t\"name\":\"breed\",\n\t\t\t\"label\":\"breed\",\n\t\t\t\"type\":\"PICKLIST\",\n\t\t\t\"options\":[\"breedA\", \"breedB\", \"breedC\"],\n\t\t\t\"sequence\":4,\n\t\t\t\"isMergeField\": false,\n\t\t\t\"isIncludedInNameDisplay\":false,\n\t\t\t\"isActive\":true\n\t\t}\n\t]\n}"
+						},
+						"url": "http://{{host}}:3000/admin/system-xerce-entity-sections/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Agency",
+			"description": null,
+			"item": [
+				{
+					"name": "create ageny of SF",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"San Francisco\",\n    \"websiteURL\": \"https://sfcity.com\",\n    \"email\": \"support@sfcity.com\",\n    \"streetAddress\": \"545, SF city\",\n    \"city\": \"San Francisco\",\n    \"state\": \"AL\",\n    \"zip\": \"94016\",\n    \"agencyTimezone\": \"PST\",\n    \"whitelistURL\": \"\",\n    \"xerce\": {\n        \"name\":\"Animal Control\",\n        \"isActive\": true,\n        \"isCaseNumberYearIncluded\": false,\n       \"caseNumberInitialization\":1,\n       \"isCaseNumberResettable\":true,\n       \"isFeeReceiptNumberYearIncluded\":true,\n       \"feeReceiptNumberInitialization\":1,\n       \"isFeeReceiptNumberResettable\":true,\n       \"caseNumberPrefix\":\"CE\",\n       \"feeReceiptNumberPrefix\":\"\",\n       \"violationTypes\": [\n       \t{\n       \t\t\"systemXerceViolationTypeId\":1,\n       \t\t\"isActive\": true\n       \t}\n       \t]\n    }\n}"
+						},
+						"url": "http://{{host}}:3000/admin/agencies"
+					},
+					"response": []
+				},
+				{
+					"name": "create ageny of SC",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"City of Texas\",\n    \"websiteURL\": \"https://californiacity.com\",\n    \"email\": \"support@sfcity.com\",\n    \"streetAddress\": \"545, SF city\",\n    \"city\": \"California\",\n    \"state\": \"AL\",\n    \"zip\": \"94016\",\n    \"agencyTimezone\": \"PST\",\n    \"whitelistURL\": \"\"\n}"
+						},
+						"url": "http://{{host}}:3000/admin/agencies"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Agency Configuration",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "http://localhost:3000/admin/agencies/1"
+					},
+					"response": []
+				},
+				{
+					"name": "get Agencies",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							},
+							{
+								"key": "",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{host}}:3000/admin/agencies?status=ACTIVE&q=san&limit=25&offset=0&sortBy=id&sortOrder=DESC",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"agencies"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "ACTIVE"
+								},
+								{
+									"key": "q",
+									"value": "san"
+								},
+								{
+									"key": "limit",
+									"value": "25"
+								},
+								{
+									"key": "offset",
+									"value": "0"
+								},
+								{
+									"key": "sortBy",
+									"value": "id"
+								},
+								{
+									"key": "sortOrder",
+									"value": "DESC"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get Active Agencies",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							},
+							{
+								"key": "",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "http://{{host}}:3000/admin/active-agencies"
+					},
+					"response": []
+				},
+				{
+					"name": "get agency profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"tests[\"Status code is 400\"] = responseCode.code === 400;"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_staff}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "http://localhost:3000/agencies/1/setup/profile"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Agency Configuration",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Santaa Francisco\",\n    \"websiteURL\": \"https://sfcity.com\",\n    \"email\": \"support@sfcity.com\",\n    \"streetAddress\": \"545, SF city\",\n    \"city\": \"San Francisco\",\n    \"state\": \"CA\",\n    \"zip\": \"94016\",\n    \"agencyTimezone\": \"PST\",\n    \"whitelistURL\": \"\",\n    \"xerce\": {\n        \"name\":\"Code Enfor\",\n        \"isActive\": true,\n        \"isCaseNumberYearIncluded\": false,\n       \"caseNumberInitialization\":1,\n       \"isCaseNumberResettable\":true,\n       \"isFeeReceiptNumberYearIncluded\":true,\n       \"feeReceiptNumberInitialization\":1,\n       \"isFeeReceiptNumberResettable\":true,\n       \"caseNumberPrefix\":\"CE\",\n       \"feeReceiptNumberPrefix\":\"\",\n       \"violationTypes\": [\n       \t\t{\n       \t\t\"systemXerceViolationTypeId\":1,\n       \t\t\"isActive\": true\n       \t}\n       \t]\n    }\n}"
+						},
+						"url": "http://localhost:3000/admin/agencies/7"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"description": null,
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_super_admin}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"firstName\": \"cyberdyne\",\n   \"lastName\": \"user\",\n   \"email\" : \"cyuser@comcate.com\",\n   \"phone\" : \"12345161\",\n   \"title\" : \"manager\",\n   \"department\": \"IT\",\n   \"isActive\": true,\n   \"isSiteAdmin\": true,\n   \"xerce\": {\n   \t\t\"xerceId\": 1,\n   \t\t\"isProductAdmin\": true,\n   \t\t\"isActive\": true,\n   \t\t\"reportAccess\": \"ALL_STAFF\",\n   \t\t\"dashboardAccess\": \"SELF_DASHBOARD\",\n   \t\t\"feesAccess\": \"CAN_VOID\",\n   \t\t\"violationTypePermissions\": [\n   \t\t\t{\n   \t\t\t\t\"configXerceViolationTypeId\": 1,\n   \t\t\t\t\"violationTypeAccess\": \"BASIC\"\n   \t\t\t},\n   \t\t\t{\n   \t\t\t\t\"configXerceViolationTypeId\": 2,\n   \t\t\t\t\"violationTypeAccess\": \"BASIC\"\n   \t\t\t},\n   \t\t\t{\n   \t\t\t\t\"configXerceViolationTypeId\": 3,\n   \t\t\t\t\"violationTypeAccess\": \"BASIC\"\n   \t\t\t},\n   \t\t\t{\n   \t\t\t\t\"configXerceViolationTypeId\": 4,\n   \t\t\t\t\"violationTypeAccess\": \"BASIC\"\n   \t\t\t}\n   \t\t\t]\n   }\n}"
+						},
+						"url": "http://localhost:3000/users"
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"firstName\": \"cyberdyne copy\",\n   \"lastName\": \"user copy\",\n   \"phone\" : \"1234516\",\n   \"title\" : \"CEO\",\n   \"department\": \"IT\",\n   \"isActive\": false,\n   \"isSiteAdmin\": false,\n   \"xerce\": {\n   \t\t\"xerceId\": 1,\n   \t\t\"isProductAdmin\": false,\n   \t\t\"isActive\": true,\n   \t\t\"reportAccess\": \"ALL_STAFF\",\n   \t\t\"dashboardAccess\": \"SELF_DASHBOARD\",\n   \t\t\"feesAccess\": \"CANT_VOID\",\n   \t\t\"violationTypePermissions\": [\n   \t\t\t{\n   \t\t\t\t\"configXerceViolationTypeId\": 1,\n   \t\t\t\t\"violationTypeAccess\": \"OVERWRITE\"\n   \t\t\t}\n   \t\t\t]\n   }\n}"
+						},
+						"url": "http://localhost:3000/users/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "content",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "http://localhost:3000/users"
+					},
+					"response": []
+				},
+				{
+					"name": "Get User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "content",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_super_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "http://localhost:3000/users/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Config Municipal Code",
+			"description": null,
+			"item": [
+				{
+					"name": "create municipal code",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_staff}}",
+								"description": "}",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_super_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"articleNumber\": \"1.2.3\",\n    \"description\": \"1.2.3 decription\",\n    \"resolutionAction\": \"another chunk of text\"\n}\n"
+						},
+						"url": "http://{{host}}:3000/xerce/config/municipal-codes"
+					},
+					"response": []
+				},
+				{
+					"name": "get  muncipal codes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_super_admin}}",
+								"description": "}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"articleNumber\": \"1.2.2\",\n    \"description\": \"1.0.0 decription\",\n    \"resolutionAction\": \"another chunk of text\"\n}\n"
+						},
+						"url": {
+							"raw": "http://{{host}}:3000/xerce/config/municipal-codes?limit=2&offset=0",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "3000",
+							"path": [
+								"xerce",
+								"config",
+								"municipal-codes"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "2"
+								},
+								{
+									"key": "offset",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get  muncipal code",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_staff}}",
+								"description": "}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"articleNumber\": \"1.2.2\",\n    \"description\": \"1.0.0 decription\",\n    \"resolutionAction\": \"another chunk of text\"\n}\n"
+						},
+						"url": "http://{{host}}:3000/xerce/config/municipal-codes/1"
+					},
+					"response": []
+				},
+				{
+					"name": "edit  muncipal code",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_staff}}",
+								"description": "}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"description\": \"changing the description of municipal code 212\"\n}\n"
+						},
+						"url": "http://localhost:3000/xerce/config/municipal-codes/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Agency Work Schedule",
+			"description": null,
+			"item": [
+				{
+					"name": "Create Work Schedule",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_staff}}",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_super_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"businessHours\": [\n\t\t{\n\t\t\t\"day\": \"SUNDAY\",\n\t\t\t\"startTime\": \"10:00\",\n\t\t\t\"endTime\": \"19:00\"\n\t\t},\n\t\t{\n\t\t\t\"day\": \"MONDAY\",\n\t\t\t\"startTime\": \"10:00\",\n\t\t\t\"endTime\": \"19:00\"\n\t\t},\n\t\t{\n\t\t\t\"day\": \"TUESDAY\",\n\t\t\t\"startTime\": \"10:00\",\n\t\t\t\"endTime\": \"19:00\"\n\t\t},\n\t\t{\n\t\t\t\"day\": \"WEDNESDAY\",\n\t\t\t\"startTime\": \"10:00\",\n\t\t\t\"endTime\": \"19:00\"\n\t\t},\n\t\t{\n\t\t\t\"day\": \"THURSDAY\",\n\t\t\t\"startTime\": \"10:00\",\n\t\t\t\"endTime\": \"19:00\"\n\t\t},\n\t\t{\n\t\t\t\"day\": \"FRIDAY\",\n\t\t\t\"startTime\": \"10:00\",\n\t\t\t\"endTime\": \"19:00\"\n\t\t},\n\t\t{\n\t\t\t\"day\": \"SATURDAY\",\n\t\t\t\"startTime\": \"10:00\",\n\t\t\t\"endTime\": \"19:00\"\n\t\t}\n\t],\n\t\"holidays\": [\n\t\t{\n\t\t\t\"startDate\": \"2019-08-29T17:12:23.561Z\",\n\t\t\t\"endDate\": \"2019-08-30T17:12:23.561Z\",\n\t\t\t\"title\": \"Good Friday\"\n\t\t},\n\t\t{\n\t\t\t\"startDate\": \"2019-07-26T17:12:23.561Z\",\n\t\t\t\"endDate\": \"2019-07-29T17:12:23.561Z\",\n\t\t\t\"title\": \"Independence Day\"\n\t\t},\n\t\t{\n\t\t\t\"startDate\": \"2019-08-26T17:12:23.561Z\",\n\t\t\t\"endDate\": \"2019-08-28T17:12:23.561Z\",\n\t\t\t\"title\": \"Republic Day\"\n\t\t}\n\t]\n}"
+						},
+						"url": "http://{{host}}:3000/agencies/config/work-schedule"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Work Schedule",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_staff}}",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_super_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"businessHours\": [\n\t\t{\n\t\t\t\"day\": \"SUNDAY\",\n\t\t\t\"startHours\": \"10:00\",\n\t\t\t\"endHours\": \"19:00\",\n\t\t\t\"isWorkingDay\": false\n\t\t},\n\t\t{\n\t\t\t\"day\": \"MONDAY\",\n\t\t\t\"startHours\": \"10:00\",\n\t\t\t\"endHours\": \"19:00\",\n\t\t\t\"isWorkingDay\": true\n\t\t},\n\t\t{\n\t\t\t\"day\": \"TUESDAY\",\n\t\t\t\"startHours\": \"10:00\",\n\t\t\t\"endHours\": \"19:00\",\n\t\t\t\"isWorkingDay\": true\n\t\t},\n\t\t{\n\t\t\t\"day\": \"WEDNESDAY\",\n\t\t\t\"startHours\": \"10:00\",\n\t\t\t\"endHours\": \"19:00\",\n\t\t\t\"isWorkingDay\": true\n\t\t},\n\t\t{\n\t\t\t\"day\": \"THURSDAY\",\n\t\t\t\"startHours\": \"10:00\",\n\t\t\t\"endHours\": \"19:00\",\n\t\t\t\"isWorkingDay\": true\n\t\t},\n\t\t{\n\t\t\t\"day\": \"FRIDAY\",\n\t\t\t\"startHours\": \"10:00\",\n\t\t\t\"endHours\": \"19:00\",\n\t\t\t\"isWorkingDay\": true\n\t\t},\n\t\t{\n\t\t\t\"day\": \"SATURDAY\",\n\t\t\t\"startHours\": \"10:00\",\n\t\t\t\"endHours\": \"19:00\",\n\t\t\t\"isWorkingDay\": false\n\t\t}\n\t]\n}"
+						},
+						"url": "http://{{host}}:3000/agencies/config/work-schedule"
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Work Schedule",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_staff}}",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_super_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"businessHours\": [\n\t\t{\n\t\t\t\"id\": 8,\n\t\t\t\"day\": \"SUNDAY\",\n\t\t\t\"startTime\": \"12:00\",\n\t\t\t\"endTime\": \"19:00\",\n\t\t\t\"isWorkingDay\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": 9,\n\t\t\t\"day\": \"MONDAY\",\n\t\t\t\"startTime\": \"10:00\",\n\t\t\t\"endTime\": \"19:00\",\n\t\t\t\"isWorkingDay\": true\n\t\t},\n\t\t{\n\t\t\t\"id\": 10,\n\t\t\t\"day\": \"TUESDAY\",\n\t\t\t\"startTime\": \"10:00\",\n\t\t\t\"endTime\": \"19:00\",\n\t\t\t\"isWorkingDay\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": 11,\n\t\t\t\"day\": \"WEDNESDAY\",\n\t\t\t\"startTime\": \"10:00\",\n\t\t\t\"endTime\": \"19:00\",\n\t\t\t\"isWorkingDay\": true\n\t\t},\n\t\t{\n\t\t\t\"id\": 12,\n\t\t\t\"day\": \"THURSDAY\",\n\t\t\t\"startTime\": \"10:00\",\n\t\t\t\"endTime\": \"19:00\",\n\t\t\t\"isWorkingDay\": true\n\t\t},\n\t\t{\n\t\t\t\"id\": 13,\n\t\t\t\"day\": \"FRIDAY\",\n\t\t\t\"startTime\": \"10:00\",\n\t\t\t\"endTime\": \"19:00\",\n\t\t\t\"isWorkingDay\": true\n\t\t},\n\t\t{\n\t\t\t\"id\": 14,\n\t\t\t\"day\": \"SATURDAY\",\n\t\t\t\"startTime\": \"11:00\",\n\t\t\t\"endTime\": \"19:00\",\n\t\t\t\"isWorkingDay\": true\n\t\t}\n\t],\n\t\"existingHolidays\": [\n\t\t{\n\t\t\t\"id\":1,\n\t\t\t\"startDate\": \"2019-08-29T17:12:23.561Z\",\n\t\t\t\"endDate\": \"2019-08-30T17:12:23.561Z\",\n\t\t\t\"title\": \"Good Friday!\"\n\t\t},\n\t\t{\n\t\t\t\"id\":2,\n\t\t\t\"startDate\": \"2019-07-26T17:12:23.561Z\",\n\t\t\t\"endDate\": \"2019-07-29T17:12:23.561Z\",\n\t\t\t\"title\": \"Independence Day\"\n\t\t},\n\t\t{\n\t\t\t\"id\":3,\n\t\t\t\"startDate\": \"2019-08-26T17:12:23.561Z\",\n\t\t\t\"endDate\": \"2019-08-28T17:12:23.561Z\",\n\t\t\t\"title\": \"Republic Day\"\n\t\t},\n\t\t{\n\t\t\t\"id\":5,\n\t\t\t\"startDate\": \"2020-08-29T17:12:23.561Z\",\n\t\t\t\"endDate\": \"2020-08-30T17:12:23.561Z\",\n\t\t\t\"title\": \"New Year\"\n\t\t}\n\t],\n\t\"newHolidays\": [\n\t\t\n\t],\n\t\"deleteHolidays\": [3,5]\n}"
+						},
+						"url": "http://{{host}}:3000/agencies/config/work-schedule"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Super Admin Login",
+			"description": null,
+			"item": [
+				{
+					"name": "super admin login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Set admin token\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.environment.set(\"token_super_admin\", \"Bearer \"+ jsonData.token);",
+									"});",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "http://{{host}}:3000/admin/agencies/1/login"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Agency Holiday",
+			"description": null,
+			"item": [
+				{
+					"name": "create agency holiday",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_staff}}",
+								"description": "}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_super_admin}}",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"startDate\": \"2018-10-03T16:57:52.556Z\",\n    \"endDate\": \"2018-10-05T16:57:52.556Z\",\n    \"title\": \"Some title\"\n}\n"
+						},
+						"url": "http://{{host}}:3000/agencies/holidays"
+					},
+					"response": []
+				},
+				{
+					"name": "get agency holidays",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_staff}}",
+								"description": "}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_super_admin}}",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"startDate\": \"2018-09-30T16:57:52.556Z\",\n    \"endDate\": \"2018-09-30T16:57:52.556Z\",\n    \"title\": \"Some title\"\n}\n"
+						},
+						"url": "http://{{host}}:3000/agencies/holidays"
+					},
+					"response": []
+				},
+				{
+					"name": "get agency holiday",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_staff}}",
+								"description": "}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_super_admin}}",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"startDate\": \"2018-09-30T16:57:52.556Z\",\n    \"endDate\": \"2018-09-30T16:57:52.556Z\",\n    \"title\": \"Some title\"\n}\n"
+						},
+						"url": "http://{{host}}:3000/agencies/holidays/1"
+					},
+					"response": []
+				},
+				{
+					"name": "edit agency holiday",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_staff}}",
+								"description": "}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_super_admin}}",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"startDate\": \"2018-08-30T16:57:52.556Z\",\n    \"endDate\": \"2018-08-31T16:57:52.556Z\",\n    \"title\": \"Some title\"\n}\n"
+						},
+						"url": "http://{{host}}:3000/agencies/holidays/1"
+					},
+					"response": []
+				},
+				{
+					"name": "delete agency holiday",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_staff}}",
+								"description": "}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_super_admin}}",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"startDate\": \"2018-09-30T16:57:52.556Z\",\n    \"endDate\": \"2018-09-30T16:57:52.556Z\",\n    \"title\": \"Some title\"\n}\n"
+						},
+						"url": "http://{{host}}:3000/agencies/holidays/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Config Xerce Violation Type",
+			"description": null,
+			"item": [
+				{
+					"name": "get config xerce violation types",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"VT4\",\n    \"description\": \"VT 3\",\n    \"isActive\": false\n}\n"
+						},
+						"url": {
+							"raw": "http://{{host}}:3000/admin/agencies/1/xerce/config/violation-types?",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"agencies",
+								"1",
+								"xerce",
+								"config",
+								"violation-types"
+							],
+							"query": [
+								{
+									"key": "filter",
+									"value": "ACTIVE",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get config xerce violation type",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}",
+								"description": "}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"VT4\",\n    \"description\": \"VT 3\",\n    \"isActive\": false\n}\n"
+						},
+						"url": {
+							"raw": "http://{{host}}:3000/admin/agencies/1/xerce/config/violation-types/2?",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"agencies",
+								"1",
+								"xerce",
+								"config",
+								"violation-types",
+								"2"
+							],
+							"query": [
+								{
+									"key": "filter",
+									"value": "ACTIVE",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Config Xerce Entity Section",
+			"description": null,
+			"item": [
+				{
+					"name": "create entity section",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}",
+								"description": "}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"label\":\"Custom Entity\",\n\t\"configXerceViolationTypeId\":4,\n\t\"isCustom\": true,\n\t\"isActive\": true,\n\t\"entityFields\":[\n\t\t{\n\t\t\t\"label\":\"Animal Colour\",\n\t\t\t\"type\":\"TEXT\",\n\t\t\t\"options\":[],\n\t\t\t\"sequence\":1,\n\t\t\t\"isMergeField\": true,\n\t\t\t\"isIncludedInEntityName\":true,\n\t\t\t\"isActive\":true\n\t\t},\n\t\t{\n\t\t\t\"label\":\"License Number\",\n\t\t\t\"type\":\"TEXT\",\n\t\t\t\"options\":[],\n\t\t\t\"sequence\":2,\n\t\t\t\"isMergeField\": true,\n\t\t\t\"isIncludedInEntityName\":true,\n\t\t\t\"isActive\":true\n\t\t},\n\t\t{\n\t\t\t\"label\":\"Age\",\n\t\t\t\"type\":\"NUMBER\",\n\t\t\t\"options\":[],\n\t\t\t\"sequence\":3,\n\t\t\t\"isMergeField\": true,\n\t\t\t\"isIncludedInEntityName\":true,\n\t\t\t\"isActive\":true\n\t\t},\n\t\t{\n\t\t\t\"label\":\"Breed\",\n\t\t\t\"type\":\"PICKLIST\",\n\t\t\t\"options\":[\"breedA\", \"breedB\", \"breedC\"],\n\t\t\t\"sequence\":4,\n\t\t\t\"isMergeField\": false,\n\t\t\t\"isIncludedInEntityName\":false,\n\t\t\t\"isActive\":true\n\t\t}\n\t]\n}"
+						},
+						"url": "http://{{host}}:3000/admin/agencies/1/xerce/config/entity-sections"
+					},
+					"response": []
+				},
+				{
+					"name": "get entity sections",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}",
+								"description": "}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"section-1\",\n\t\"label\": \"section-1\",\n\t\"isActive\": true,\n\t\"isAvailableForCaseCreation\": true,\n\t\"isAvailableForCaseDetails\": true,\n\t\"violationTypeIds\": [4]\n}\n"
+						},
+						"url": "http://{{host}}:3000/admin/agencies/1/xerce/config/entity-sections"
+					},
+					"response": []
+				},
+				{
+					"name": "get entity section",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}",
+								"description": "}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"section-1\",\n\t\"label\": \"section-1\",\n\t\"isActive\": true,\n\t\"isAvailableForCaseCreation\": true,\n\t\"isAvailableForCaseDetails\": true,\n\t\"violationTypeIds\": [4]\n}\n"
+						},
+						"url": "http://{{host}}:3000/admin/agencies/1/xerce/config/entity-sections/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Entity section",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}",
+								"description": "}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"label\": \"Custom Entity\",\n    \"isActive\": true,\n    \"existingEntityFields\": [\n        {\n            \"id\": 16,\n            \"label\": \"Animal Colour U\",\n            \"isActive\": true,\n            \"type\": \"TEXT\",\n            \"options\": [],\n            \"isMergeField\": true,\n            \"isIncludedInEntityName\": true,\n            \"sequence\": 1\n        },\n        {\n            \"id\": 17,\n            \"label\": \"License Number U\",\n            \"isActive\": true,\n            \"type\": \"TEXT\",\n            \"options\": [],\n            \"isMergeField\": true,\n            \"isIncludedInEntityName\": true,\n            \"sequence\": 2\n        },\n        {\n            \"id\": 18,\n            \"label\": \"Age\",\n            \"isActive\": true,\n            \"type\": \"NUMBER\",\n            \"options\": [],\n            \"isMergeField\": false,\n            \"isIncludedInEntityName\": true,\n            \"sequence\": 3\n        },\n        {\n            \"id\": 19,\n            \"label\": \"Breed\",\n            \"isActive\": false,\n            \"type\": \"PICKLIST\",\n            \"options\": [\n                \"breedA\",\n                \"breedB\",\n                \"breedC\"\n            ],\n            \"isMergeField\": false,\n            \"isIncludedInEntityName\": false,\n            \"sequence\": 4\n        }\n    ],\n    \"newEntityFields\": [\n    \t\n    ]\n}"
+						},
+						"url": "http://{{host}}:3000/admin/agencies/36/xerce/config/entity-sections/3"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Refresh JWT",
+			"description": "",
+			"item": [
+				{
+					"name": "Refresh JWT Token",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_super_admin}}",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_staff}}"
+							}
+						],
+						"body": {},
+						"url": "http://{{host}}:3000/refresh-token"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User Login",
+			"description": "",
+			"item": [
+				{
+					"name": "User Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"cyuser@comcate.com\",\n\t\"password\": \"test@123\"\n}"
+						},
+						"url": "http://{{host}}:3000/user/login"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "admin login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Set admin token\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.environment.set(\"token_admin\", \"Bearer \"+ jsonData.token);",
+							"});",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"support@comcate.com\",\n  \"password\": \"test@123\"\n}"
+				},
+				"url": "http://{{host}}:3000/admin/login"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "af9dff30-40bb-4c74-9745-db01aa20d732",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "c8c0b1e6-fbbb-4dc3-b897-26fef36c661b",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

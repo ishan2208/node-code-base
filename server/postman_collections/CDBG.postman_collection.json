@@ -1,0 +1,113 @@
+{
+	"info": {
+		"_postman_id": "82c770c5-086d-4cd6-b03d-209e8cb7419a",
+		"name": "CDBG",
+		"description": "Upload CDBG file stored at location `/var/cyberdyne/assets`",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authorisation",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Admin Login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "98386eee-ea06-4b48-aefe-7c1a5348aad7",
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Set admin token\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.environment.set(\"token_admin\", \"Bearer \"+ jsonData.token);",
+											"});",
+											"",
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"support@comcate.com\",\n  \"password\": \"test@123\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/admin/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"admin",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "CDBG",
+			"item": [
+				{
+					"name": "Upload CDBG File",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token_admin}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "shapefile",
+									"type": "file",
+									"src": "{{filepath}}"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/admin/gis/layers/cdbg",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"gis",
+								"layers",
+								"cdbg"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

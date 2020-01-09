@@ -1,0 +1,211 @@
+swagger: '2.0'
+info:
+  description: Comcate API server
+  version: '0.1.0'
+  contact:
+    email: chirag@velotio.com
+  title: Comcate Application
+# during dev, should point to your local machine
+host: localhost:3000
+# basePath prefixes all resource paths
+basePath: /
+#
+schemes:
+  # tip: remove http to make production-grade
+  - http
+  - https
+# format of bodies a client can send (Content-Type)
+consumes:
+  - application/json
+  - multipart/form-data
+# format of the responses to the client (Accepts)
+produces:
+  - application/json
+
+securityDefinitions:
+  JWT:
+    name: Authorization
+    type: apiKey
+    in: header
+
+# Apply agencyId param in the global scope.
+paths:
+  /admin/available-system-icons:
+    x-swagger-router-controller: admin/systemIcon
+    get:
+      description: return all available system icons
+      operationId: getAvailableSystemIcons
+      x-authz-admin-scope: ['comcateAdmin']
+      security:
+        - JWT: []
+      responses:
+        200:
+          description: returns the list of available system icons
+          schema:
+            $ref: '#/definitions/SystemIconResponse'
+        400:
+          description: Bad Json Formatting
+          schema:
+            $ref: "#/definitions/Error"
+
+  /admin/login:
+    x-swagger-router-controller: admin/comcateAdmin
+    post:
+      description: Admin login
+      operationId: adminLogin
+      parameters:
+      - name: body
+        in: body
+        description: Login credentials of the user.
+        required: true
+        schema:
+          $ref: '#/definitions/LoginRequest'
+      responses:
+        200:
+          description: successfully returns the JWT token
+          schema:
+            $ref: '#/definitions/LoginResponse'
+        400:
+          description: Bad Json Formatting
+          schema:
+            $ref: "#/definitions/Error"
+
+  /admin/system-icons:
+    x-swagger-router-controller: admin/systemIcon
+    post:
+      description: Add system icon
+      operationId: createSystemIcon
+      x-authz-admin-scope: ['comcateAdmin']
+      security:
+        - JWT: []
+      parameters:
+      - name: body
+        in: body
+        description: system icon details.
+        required: true
+        schema:
+          $ref: '#/definitions/SystemIconRequest'
+      responses:
+        201:
+          description: returns the created system icon
+          schema:
+            $ref: '#/definitions/SystemIconResponse'
+        400:
+          description: Bad Json Formatting
+          schema:
+            $ref: "#/definitions/Error"
+        409:
+          description: Conflict
+          schema:
+            $ref: '#/definitions/Error'
+    get:
+      description: return system icons
+      operationId: getSystemIcons
+      x-authz-admin-scope: ['comcateAdmin']
+      security:
+        - JWT: []
+      responses:
+        200:
+          description: returns the list of system icons
+          schema:
+            $ref: '#/definitions/SystemIconResponse'
+        400:
+          description: Bad Json Formatting
+          schema:
+            $ref: "#/definitions/Error"
+
+  /admin/system-icons/{id}:
+    x-swagger-router-controller: admin/systemIcon
+    get:
+      description: return system icon
+      operationId: getSystemIcon
+      x-authz-admin-scope: ['comcateAdmin']
+      security:
+        - JWT: []
+      parameters:
+      - name: id
+        in: path
+        description: Id of the system icon
+        required: true
+        type: integer
+        format: int32
+      responses:
+        200:
+          description: returns the system icon
+          schema:
+            $ref: '#/definitions/SystemIconResponse'
+        400:
+          description: Bad Json Formatting
+          schema:
+            $ref: "#/definitions/Error"
+
+definitions:
+  ActiveAgencyListResponse:
+    type: object
+    required:
+      - agencies
+    properties:
+      agencies:
+        type: array
+        items:
+          $ref: '#/definitions/ActiveAgencyResponse'
+
+  ActiveAgencyResponse:
+    type: object
+    required:
+      - id
+      - name
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+        maxLength: 50
+        minLength: 1
+        pattern: ^(?!\s*$).+
+
+  AgencyConfigurationEditRequest:
+    type: object
+    properties:
+      name:
+        type: string
+        maxLength: 50
+        minLength: 1
+        pattern: ^(?!\s*$).+
+      websiteURL:
+        type: string
+        format: uri
+        maxLength: 256
+        minLength: 1
+      email:
+        type: string
+        format: email
+        maxLength: 80
+      agencyTimezone:
+        type: string
+        enum: ['HST', 'AKST', 'PST', 'MST', 'CST', 'EST']
+      whitelistURL:
+        type: string
+        format: uri
+        maxLength: 256
+      streetAddress:
+        type: string
+        maxLength: 500
+        minLength: 1
+      city:
+        type: string
+        maxLength: 50
+        minLength: 1
+        pattern: ^(?!\s*$).+
+      state:
+        type: string
+        maxLength: 50
+        minLength: 1
+        pattern: ^(?!\s*$).+
+      zip:
+        type: string
+        maxLength: 15
+        minLength: 1
+        pattern: ^(?!\s*$).+
+      xerce:
+        $ref: '#/definitions/XerceRequest'

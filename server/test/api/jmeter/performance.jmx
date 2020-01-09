@@ -1,0 +1,2309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.1.1 r1855137">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">true</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+        <collectionProp name="HeaderManager.headers">
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">Content-Type</stringProp>
+            <stringProp name="Header.value">application/json</stringProp>
+          </elementProp>
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">Accept</stringProp>
+            <stringProp name="Header.value">application/json</stringProp>
+          </elementProp>
+        </collectionProp>
+      </HeaderManager>
+      <hashTree/>
+      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
+        <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="" elementType="HTTPArgument">
+              <boolProp name="HTTPArgument.always_encode">false</boolProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <boolProp name="HTTPArgument.use_equals">true</boolProp>
+            </elementProp>
+          </collectionProp>
+        </elementProp>
+        <stringProp name="HTTPSampler.domain">127.0.0.1</stringProp>
+        <stringProp name="HTTPSampler.port">3000</stringProp>
+        <stringProp name="HTTPSampler.protocol">http</stringProp>
+        <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+        <stringProp name="HTTPSampler.path"></stringProp>
+        <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
+        <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+        <stringProp name="HTTPSampler.response_timeout"></stringProp>
+      </ConfigTestElement>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Admin Login" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1556522442000</longProp>
+        <longProp name="ThreadGroup.end_time">1556522442000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Admin Login" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;email&quot;: &quot;support@comcate.com&quot;,&#xd;
+  &quot;password&quot;: &quot;test@123&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">admin/login</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extract Admin Token" enabled="true">
+          <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+          <stringProp name="RegexExtractor.refname">admin_token</stringProp>
+          <stringProp name="RegexExtractor.regex">&quot;token&quot;:&quot;(.+?)&quot;</stringProp>
+          <stringProp name="RegexExtractor.template">$1$</stringProp>
+          <stringProp name="RegexExtractor.default"></stringProp>
+          <stringProp name="RegexExtractor.match_number"></stringProp>
+          <stringProp name="Sample.scope">all</stringProp>
+        </RegexExtractor>
+        <hashTree/>
+        <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
+          <stringProp name="filename"></stringProp>
+          <stringProp name="parameters"></stringProp>
+          <boolProp name="resetInterpreter">false</boolProp>
+          <stringProp name="script">${__setProperty(admin_token,${admin_token})}</stringProp>
+        </BeanShellPostProcessor>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Super Admin Login" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1549113883000</longProp>
+        <longProp name="ThreadGroup.end_time">1549113883000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Admin Header" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Content-Type</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Accept</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Authorization</stringProp>
+              <stringProp name="Header.value">Bearer ${__property(admin_token)}</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Super Admin Login - Agency 1" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">admin/agencies/1/login</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extract Super Admin Token" enabled="true">
+          <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+          <stringProp name="RegexExtractor.refname">super_admin_token</stringProp>
+          <stringProp name="RegexExtractor.regex">&quot;token&quot;:&quot;(.+?)&quot;</stringProp>
+          <stringProp name="RegexExtractor.template">$1$</stringProp>
+          <stringProp name="RegexExtractor.default"></stringProp>
+          <stringProp name="RegexExtractor.match_number"></stringProp>
+          <stringProp name="Scope.variable">super_admin_token11</stringProp>
+          <stringProp name="Sample.scope">all</stringProp>
+        </RegexExtractor>
+        <hashTree/>
+        <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
+          <boolProp name="resetInterpreter">false</boolProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="script">${__setProperty(super_admin_token,${super_admin_token})}</stringProp>
+        </BeanShellPostProcessor>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="User Login" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="User Login" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;email&quot;: &quot;mayuri.pawar@velotio.com&quot;,&#xd;
+  &quot;password&quot;: &quot;Test@1234&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">agencies/28/login</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extract User Token" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">User_token</stringProp>
+            <stringProp name="RegexExtractor.regex">&quot;token&quot;:&quot;(.+?)&quot;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default"></stringProp>
+            <stringProp name="RegexExtractor.match_number"></stringProp>
+            <stringProp name="Sample.scope">all</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+        </hashTree>
+        <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
+          <boolProp name="resetInterpreter">false</boolProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="script">${__setProperty(User_token,${User_token})}</stringProp>
+        </BeanShellPostProcessor>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Create Case_consecutive" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">5</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1556522218000</longProp>
+        <longProp name="ThreadGroup.end_time">1556522218000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Super Admin Header" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Content-Type</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Accept</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Authorization</stringProp>
+              <stringProp name="Header.value">Bearer ${__property(super_admin_token)}</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Create Case - Agency 1" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;assigneeId&quot;:1,&#xd;
+  &quot;inspectionAssigneeId&quot;: 1,&#xd;
+  &quot;inspectionDate&quot;:&quot;2019-08-30T17:12:23.561Z&quot;,&#xd;
+  &quot;issueDescription&quot;: &quot;This is my issue description.&quot;,&#xd;
+  &quot;location&quot;: {&#xd;
+    &quot;streetAddress&quot;: &quot;547,Alabama&quot;,&#xd;
+    &quot;city&quot;: &quot;Alabama&quot;,&#xd;
+    &quot;state&quot;: &quot;AL&quot;,&#xd;
+    &quot;zip&quot;: &quot;94016&quot;,&#xd;
+    &quot;latitude&quot;:34.0401465212326,&#xd;
+    &quot;longitude&quot;:-78.0749587334245,&#xd;
+    &quot;flagAddress&quot;: {&#xd;
+	    &quot;isFlagged&quot;: true,&#xd;
+	    &quot;reasonForFlagging&quot;: &quot;test reason&quot;&#xd;
+    },&#xd;
+    &quot;isCDBGEligible&quot;: false,&#xd;
+    &quot;isCDBGApproved&quot;: false,&#xd;
+    &quot;parcelFields&quot;: {&#xd;
+    },&#xd;
+    &quot;manualFields&quot;: {&#xd;
+    	&quot;Ward&quot;:&quot;Ward I&quot;,&#xd;
+    	&quot;Lot&quot;: 23,&#xd;
+    	&quot;Block&quot;: 1&#xd;
+    }&#xd;
+  },&#xd;
+  &quot;attachments&quot;: [&#xd;
+      {&#xd;
+          &quot;title&quot;: &quot;This is PNG attachment &quot;,&#xd;
+          &quot;description&quot;: &quot;this is a description&quot;,&#xd;
+          &quot;fileName&quot;: &quot;This is a file name1&quot;,&#xd;
+          &quot;fileSize&quot;: &quot;20KB&quot;,&#xd;
+          &quot;fileURL&quot;: &quot;https://cyberdyne-dev.s3.amazonaws.com/agency_1/staging/cases/actionspopup.png&quot;&#xd;
+      }&#xd;
+  ],&#xd;
+  &quot;violations&quot;: [&#xd;
+  	{&#xd;
+  		&quot;configXerceViolationId&quot;: 1,&#xd;
+  		&quot;entities&quot;: [&#xd;
+  			{&#xd;
+	  			&quot;Animal Colour&quot;: &quot;Black&quot;,&#xd;
+	  			&quot;License Number&quot;: &quot;1234&quot;,&#xd;
+	  			&quot;Age&quot;: 12,&#xd;
+	  			&quot;Breed&quot;: &quot;&quot;,&#xd;
+	  			&quot;Note&quot;: &quot;&quot;&#xd;
+  			}&#xd;
+  		]&#xd;
+  	},&#xd;
+  	{&#xd;
+  		&quot;configXerceViolationId&quot;: 2,&#xd;
+  		&quot;entities&quot;: [&#xd;
+  			{&#xd;
+	  			&quot;Vehicle Color&quot;: &quot;Black&quot;,&#xd;
+	  			&quot;License Number&quot;: &quot;1234&quot;,&#xd;
+	  			&quot;Model Number&quot;: 12,&#xd;
+	  			&quot;Note&quot;: &quot;&quot;&#xd;
+  			}&#xd;
+  		]&#xd;
+  	},&#xd;
+  	{&#xd;
+  		&quot;configXerceViolationId&quot;: 3,&#xd;
+  		&quot;entities&quot;: [&#xd;
+  			{&#xd;
+	  			&quot;Vehicle Color&quot;: &quot;Blue&quot;,&#xd;
+	  			&quot;License Number&quot;: &quot;5678&quot;,&#xd;
+	  			&quot;Model Number&quot;: 11,&#xd;
+	  			&quot;Note&quot;: &quot;&quot;&#xd;
+  			}&#xd;
+  		]&#xd;
+  	}&#xd;
+  ],&#xd;
+  &quot;customCaseFieldValues&quot;: [&#xd;
+  	{&#xd;
+          &quot;Property Lien&quot;: {&#xd;
+              &quot;Start Date&quot;: &quot;2017-08-30&quot;,&#xd;
+              &quot;End Date&quot;: &quot;2022-08-30&quot;,&#xd;
+              &quot;Property Lien Type&quot;: &quot;Long Term&quot;,&#xd;
+              &quot;Property Lien By&quot;: &quot;Mr. jhon Doe&quot;&#xd;
+          }&#xd;
+      }&#xd;
+   ],&#xd;
+   &quot;contacts&quot;: [&#xd;
+   	{&#xd;
+   		&quot;id&quot;: 1,&#xd;
+   		&quot;isBillable&quot;: false&#xd;
+   	}&#xd;
+   	]&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">xerce/cases</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extract Case Id" enabled="true">
+          <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+          <stringProp name="RegexExtractor.refname">case_id</stringProp>
+          <stringProp name="RegexExtractor.regex">&quot;id&quot;:(.*?),</stringProp>
+          <stringProp name="RegexExtractor.template">$1$</stringProp>
+          <stringProp name="RegexExtractor.default"></stringProp>
+          <stringProp name="RegexExtractor.match_number">1</stringProp>
+          <stringProp name="Scope.variable">super_admin_token11</stringProp>
+          <stringProp name="Sample.scope">all</stringProp>
+        </RegexExtractor>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Case - Agency 1" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">xerce/cases/${case_id}</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Extract First Case Violation Id" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">case_violation_1</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.caseViolations[0].id</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Extract Second Case Violation Id" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">case_violation_2</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.caseViolations[1].id</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Extract Third Case Violation Id" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">case_violation_3</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.caseViolations[2].id</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Extract Inspection Id" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">inspection_id</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.inspections[0].id</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Create Case_Parallel" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1556522218000</longProp>
+        <longProp name="ThreadGroup.end_time">1556522218000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Super Admin Header" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Content-Type</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Accept</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Authorization</stringProp>
+              <stringProp name="Header.value">Bearer ${__property(super_admin_token)}</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <com.blazemeter.jmeter.controller.ParallelSampler guiclass="com.blazemeter.jmeter.controller.ParallelControllerGui" testclass="com.blazemeter.jmeter.controller.ParallelSampler" testname="bzm - Parallel Controller" enabled="true">
+          <boolProp name="PARENT_SAMPLE">true</boolProp>
+        </com.blazemeter.jmeter.controller.ParallelSampler>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Create Case" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+  &quot;assigneeId&quot;:1,&#xd;
+  &quot;inspectionAssigneeId&quot;: 1,&#xd;
+  &quot;inspectionDate&quot;:&quot;2019-08-30T17:12:23.561Z&quot;,&#xd;
+  &quot;issueDescription&quot;: &quot;This is my issue description.&quot;,&#xd;
+  &quot;location&quot;: {&#xd;
+    &quot;streetAddress&quot;: &quot;547,Alabama&quot;,&#xd;
+    &quot;city&quot;: &quot;Alabama&quot;,&#xd;
+    &quot;state&quot;: &quot;AL&quot;,&#xd;
+    &quot;zip&quot;: &quot;94016&quot;,&#xd;
+    &quot;latitude&quot;:34.0401465212326,&#xd;
+    &quot;longitude&quot;:-78.0749587334245,&#xd;
+    &quot;flagAddress&quot;: {&#xd;
+	    &quot;isFlagged&quot;: true,&#xd;
+	    &quot;reasonForFlagging&quot;: &quot;test reason&quot;&#xd;
+    },&#xd;
+    &quot;isCDBGEligible&quot;: false,&#xd;
+    &quot;isCDBGApproved&quot;: false,&#xd;
+    &quot;parcelFields&quot;: {&#xd;
+    },&#xd;
+    &quot;manualFields&quot;: {&#xd;
+    	&quot;Ward&quot;:&quot;Ward I&quot;,&#xd;
+    	&quot;Lot&quot;: 23,&#xd;
+    	&quot;Block&quot;: 1&#xd;
+    }&#xd;
+  },&#xd;
+  &quot;attachments&quot;: [&#xd;
+      {&#xd;
+          &quot;title&quot;: &quot;This is PNG attachment &quot;,&#xd;
+          &quot;description&quot;: &quot;this is a description&quot;,&#xd;
+          &quot;fileName&quot;: &quot;This is a file name1&quot;,&#xd;
+          &quot;fileSize&quot;: &quot;20KB&quot;,&#xd;
+          &quot;fileURL&quot;: &quot;https://cyberdyne-dev.s3.amazonaws.com/agency_1/staging/cases/actionspopup.png&quot;&#xd;
+      }&#xd;
+  ],&#xd;
+  &quot;violations&quot;: [&#xd;
+  	{&#xd;
+  		&quot;configXerceViolationId&quot;: 1,&#xd;
+  		&quot;entities&quot;: [&#xd;
+  			{&#xd;
+	  			&quot;Animal Colour&quot;: &quot;Black&quot;,&#xd;
+	  			&quot;License Number&quot;: &quot;1234&quot;,&#xd;
+	  			&quot;Age&quot;: 12,&#xd;
+	  			&quot;Breed&quot;: &quot;&quot;,&#xd;
+	  			&quot;Note&quot;: &quot;&quot;&#xd;
+  			}&#xd;
+  		]&#xd;
+  	},&#xd;
+  	{&#xd;
+  		&quot;configXerceViolationId&quot;: 2,&#xd;
+  		&quot;entities&quot;: [&#xd;
+  			{&#xd;
+	  			&quot;Vehicle Color&quot;: &quot;Black&quot;,&#xd;
+	  			&quot;License Number&quot;: &quot;1234&quot;,&#xd;
+	  			&quot;Model Number&quot;: 12,&#xd;
+	  			&quot;Note&quot;: &quot;&quot;&#xd;
+  			}&#xd;
+  		]&#xd;
+  	},&#xd;
+  	{&#xd;
+  		&quot;configXerceViolationId&quot;: 3,&#xd;
+  		&quot;entities&quot;: [&#xd;
+  			{&#xd;
+	  			&quot;Vehicle Color&quot;: &quot;Blue&quot;,&#xd;
+	  			&quot;License Number&quot;: &quot;5678&quot;,&#xd;
+	  			&quot;Model Number&quot;: 11,&#xd;
+	  			&quot;Note&quot;: &quot;&quot;&#xd;
+  			}&#xd;
+  		]&#xd;
+  	}&#xd;
+  ],&#xd;
+  &quot;customCaseFieldValues&quot;: [&#xd;
+  	{&#xd;
+          &quot;Property Lien&quot;: {&#xd;
+              &quot;Start Date&quot;: &quot;2017-08-30&quot;,&#xd;
+              &quot;End Date&quot;: &quot;2022-08-30&quot;,&#xd;
+              &quot;Property Lien Type&quot;: &quot;Long Term&quot;,&#xd;
+              &quot;Property Lien By&quot;: &quot;Mr. jhon Doe&quot;&#xd;
+          }&#xd;
+      }&#xd;
+   ],&#xd;
+   &quot;contacts&quot;: [&#xd;
+   	{&#xd;
+   		&quot;id&quot;: 1,&#xd;
+   		&quot;isBillable&quot;: false&#xd;
+   	}&#xd;
+   	]&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">xerce/cases</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Create Case" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+  &quot;assigneeId&quot;:1,&#xd;
+  &quot;inspectionAssigneeId&quot;: 1,&#xd;
+  &quot;inspectionDate&quot;:&quot;2019-08-30T17:12:23.561Z&quot;,&#xd;
+  &quot;issueDescription&quot;: &quot;This is my issue description.&quot;,&#xd;
+  &quot;location&quot;: {&#xd;
+    &quot;streetAddress&quot;: &quot;547,Alabama&quot;,&#xd;
+    &quot;city&quot;: &quot;Alabama&quot;,&#xd;
+    &quot;state&quot;: &quot;AL&quot;,&#xd;
+    &quot;zip&quot;: &quot;94016&quot;,&#xd;
+    &quot;latitude&quot;:34.0401465212326,&#xd;
+    &quot;longitude&quot;:-78.0749587334245,&#xd;
+    &quot;flagAddress&quot;: {&#xd;
+	    &quot;isFlagged&quot;: true,&#xd;
+	    &quot;reasonForFlagging&quot;: &quot;test reason&quot;&#xd;
+    },&#xd;
+    &quot;isCDBGEligible&quot;: false,&#xd;
+    &quot;isCDBGApproved&quot;: false,&#xd;
+    &quot;parcelFields&quot;: {&#xd;
+    },&#xd;
+    &quot;manualFields&quot;: {&#xd;
+    	&quot;Ward&quot;:&quot;Ward I&quot;,&#xd;
+    	&quot;Lot&quot;: 23,&#xd;
+    	&quot;Block&quot;: 1&#xd;
+    }&#xd;
+  },&#xd;
+  &quot;attachments&quot;: [&#xd;
+      {&#xd;
+          &quot;title&quot;: &quot;This is PNG attachment &quot;,&#xd;
+          &quot;description&quot;: &quot;this is a description&quot;,&#xd;
+          &quot;fileName&quot;: &quot;This is a file name1&quot;,&#xd;
+          &quot;fileSize&quot;: &quot;20KB&quot;,&#xd;
+          &quot;fileURL&quot;: &quot;https://cyberdyne-dev.s3.amazonaws.com/agency_1/staging/cases/actionspopup.png&quot;&#xd;
+      }&#xd;
+  ],&#xd;
+  &quot;violations&quot;: [&#xd;
+  	{&#xd;
+  		&quot;configXerceViolationId&quot;: 1,&#xd;
+  		&quot;entities&quot;: [&#xd;
+  			{&#xd;
+	  			&quot;Animal Colour&quot;: &quot;Black&quot;,&#xd;
+	  			&quot;License Number&quot;: &quot;1234&quot;,&#xd;
+	  			&quot;Age&quot;: 12,&#xd;
+	  			&quot;Breed&quot;: &quot;&quot;,&#xd;
+	  			&quot;Note&quot;: &quot;&quot;&#xd;
+  			}&#xd;
+  		]&#xd;
+  	},&#xd;
+  	{&#xd;
+  		&quot;configXerceViolationId&quot;: 2,&#xd;
+  		&quot;entities&quot;: [&#xd;
+  			{&#xd;
+	  			&quot;Vehicle Color&quot;: &quot;Black&quot;,&#xd;
+	  			&quot;License Number&quot;: &quot;1234&quot;,&#xd;
+	  			&quot;Model Number&quot;: 12,&#xd;
+	  			&quot;Note&quot;: &quot;&quot;&#xd;
+  			}&#xd;
+  		]&#xd;
+  	},&#xd;
+  	{&#xd;
+  		&quot;configXerceViolationId&quot;: 3,&#xd;
+  		&quot;entities&quot;: [&#xd;
+  			{&#xd;
+	  			&quot;Vehicle Color&quot;: &quot;Blue&quot;,&#xd;
+	  			&quot;License Number&quot;: &quot;5678&quot;,&#xd;
+	  			&quot;Model Number&quot;: 11,&#xd;
+	  			&quot;Note&quot;: &quot;&quot;&#xd;
+  			}&#xd;
+  		]&#xd;
+  	}&#xd;
+  ],&#xd;
+  &quot;customCaseFieldValues&quot;: [&#xd;
+  	{&#xd;
+          &quot;Property Lien&quot;: {&#xd;
+              &quot;Start Date&quot;: &quot;2017-08-30&quot;,&#xd;
+              &quot;End Date&quot;: &quot;2022-08-30&quot;,&#xd;
+              &quot;Property Lien Type&quot;: &quot;Long Term&quot;,&#xd;
+              &quot;Property Lien By&quot;: &quot;Mr. jhon Doe&quot;&#xd;
+          }&#xd;
+      }&#xd;
+   ],&#xd;
+   &quot;contacts&quot;: [&#xd;
+   	{&#xd;
+   		&quot;id&quot;: 1,&#xd;
+   		&quot;isBillable&quot;: false&#xd;
+   	}&#xd;
+   	]&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">xerce/cases</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Create Case" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+  &quot;assigneeId&quot;:1,&#xd;
+  &quot;inspectionAssigneeId&quot;: 1,&#xd;
+  &quot;inspectionDate&quot;:&quot;2019-08-30T17:12:23.561Z&quot;,&#xd;
+  &quot;issueDescription&quot;: &quot;This is my issue description.&quot;,&#xd;
+  &quot;location&quot;: {&#xd;
+    &quot;streetAddress&quot;: &quot;547,Alabama&quot;,&#xd;
+    &quot;city&quot;: &quot;Alabama&quot;,&#xd;
+    &quot;state&quot;: &quot;AL&quot;,&#xd;
+    &quot;zip&quot;: &quot;94016&quot;,&#xd;
+    &quot;latitude&quot;:34.0401465212326,&#xd;
+    &quot;longitude&quot;:-78.0749587334245,&#xd;
+    &quot;flagAddress&quot;: {&#xd;
+	    &quot;isFlagged&quot;: true,&#xd;
+	    &quot;reasonForFlagging&quot;: &quot;test reason&quot;&#xd;
+    },&#xd;
+    &quot;isCDBGEligible&quot;: false,&#xd;
+    &quot;isCDBGApproved&quot;: false,&#xd;
+    &quot;parcelFields&quot;: {&#xd;
+    },&#xd;
+    &quot;manualFields&quot;: {&#xd;
+    	&quot;Ward&quot;:&quot;Ward I&quot;,&#xd;
+    	&quot;Lot&quot;: 23,&#xd;
+    	&quot;Block&quot;: 1&#xd;
+    }&#xd;
+  },&#xd;
+  &quot;attachments&quot;: [&#xd;
+      {&#xd;
+          &quot;title&quot;: &quot;This is PNG attachment &quot;,&#xd;
+          &quot;description&quot;: &quot;this is a description&quot;,&#xd;
+          &quot;fileName&quot;: &quot;This is a file name1&quot;,&#xd;
+          &quot;fileSize&quot;: &quot;20KB&quot;,&#xd;
+          &quot;fileURL&quot;: &quot;https://cyberdyne-dev.s3.amazonaws.com/agency_1/staging/cases/actionspopup.png&quot;&#xd;
+      }&#xd;
+  ],&#xd;
+  &quot;violations&quot;: [&#xd;
+  	{&#xd;
+  		&quot;configXerceViolationId&quot;: 1,&#xd;
+  		&quot;entities&quot;: [&#xd;
+  			{&#xd;
+	  			&quot;Animal Colour&quot;: &quot;Black&quot;,&#xd;
+	  			&quot;License Number&quot;: &quot;1234&quot;,&#xd;
+	  			&quot;Age&quot;: 12,&#xd;
+	  			&quot;Breed&quot;: &quot;&quot;,&#xd;
+	  			&quot;Note&quot;: &quot;&quot;&#xd;
+  			}&#xd;
+  		]&#xd;
+  	},&#xd;
+  	{&#xd;
+  		&quot;configXerceViolationId&quot;: 2,&#xd;
+  		&quot;entities&quot;: [&#xd;
+  			{&#xd;
+	  			&quot;Vehicle Color&quot;: &quot;Black&quot;,&#xd;
+	  			&quot;License Number&quot;: &quot;1234&quot;,&#xd;
+	  			&quot;Model Number&quot;: 12,&#xd;
+	  			&quot;Note&quot;: &quot;&quot;&#xd;
+  			}&#xd;
+  		]&#xd;
+  	},&#xd;
+  	{&#xd;
+  		&quot;configXerceViolationId&quot;: 3,&#xd;
+  		&quot;entities&quot;: [&#xd;
+  			{&#xd;
+	  			&quot;Vehicle Color&quot;: &quot;Blue&quot;,&#xd;
+	  			&quot;License Number&quot;: &quot;5678&quot;,&#xd;
+	  			&quot;Model Number&quot;: 11,&#xd;
+	  			&quot;Note&quot;: &quot;&quot;&#xd;
+  			}&#xd;
+  		]&#xd;
+  	}&#xd;
+  ],&#xd;
+  &quot;customCaseFieldValues&quot;: [&#xd;
+  	{&#xd;
+          &quot;Property Lien&quot;: {&#xd;
+              &quot;Start Date&quot;: &quot;2017-08-30&quot;,&#xd;
+              &quot;End Date&quot;: &quot;2022-08-30&quot;,&#xd;
+              &quot;Property Lien Type&quot;: &quot;Long Term&quot;,&#xd;
+              &quot;Property Lien By&quot;: &quot;Mr. jhon Doe&quot;&#xd;
+          }&#xd;
+      }&#xd;
+   ],&#xd;
+   &quot;contacts&quot;: [&#xd;
+   	{&#xd;
+   		&quot;id&quot;: 1,&#xd;
+   		&quot;isBillable&quot;: false&#xd;
+   	}&#xd;
+   	]&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">xerce/cases</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Create Case" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+  &quot;assigneeId&quot;:1,&#xd;
+  &quot;inspectionAssigneeId&quot;: 1,&#xd;
+  &quot;inspectionDate&quot;:&quot;2019-08-30T17:12:23.561Z&quot;,&#xd;
+  &quot;issueDescription&quot;: &quot;This is my issue description.&quot;,&#xd;
+  &quot;location&quot;: {&#xd;
+    &quot;streetAddress&quot;: &quot;547,Alabama&quot;,&#xd;
+    &quot;city&quot;: &quot;Alabama&quot;,&#xd;
+    &quot;state&quot;: &quot;AL&quot;,&#xd;
+    &quot;zip&quot;: &quot;94016&quot;,&#xd;
+    &quot;latitude&quot;:34.0401465212326,&#xd;
+    &quot;longitude&quot;:-78.0749587334245,&#xd;
+    &quot;flagAddress&quot;: {&#xd;
+	    &quot;isFlagged&quot;: true,&#xd;
+	    &quot;reasonForFlagging&quot;: &quot;test reason&quot;&#xd;
+    },&#xd;
+    &quot;isCDBGEligible&quot;: false,&#xd;
+    &quot;isCDBGApproved&quot;: false,&#xd;
+    &quot;parcelFields&quot;: {&#xd;
+    },&#xd;
+    &quot;manualFields&quot;: {&#xd;
+    	&quot;Ward&quot;:&quot;Ward I&quot;,&#xd;
+    	&quot;Lot&quot;: 23,&#xd;
+    	&quot;Block&quot;: 1&#xd;
+    }&#xd;
+  },&#xd;
+  &quot;attachments&quot;: [&#xd;
+      {&#xd;
+          &quot;title&quot;: &quot;This is PNG attachment &quot;,&#xd;
+          &quot;description&quot;: &quot;this is a description&quot;,&#xd;
+          &quot;fileName&quot;: &quot;This is a file name1&quot;,&#xd;
+          &quot;fileSize&quot;: &quot;20KB&quot;,&#xd;
+          &quot;fileURL&quot;: &quot;https://cyberdyne-dev.s3.amazonaws.com/agency_1/staging/cases/actionspopup.png&quot;&#xd;
+      }&#xd;
+  ],&#xd;
+  &quot;violations&quot;: [&#xd;
+  	{&#xd;
+  		&quot;configXerceViolationId&quot;: 1,&#xd;
+  		&quot;entities&quot;: [&#xd;
+  			{&#xd;
+	  			&quot;Animal Colour&quot;: &quot;Black&quot;,&#xd;
+	  			&quot;License Number&quot;: &quot;1234&quot;,&#xd;
+	  			&quot;Age&quot;: 12,&#xd;
+	  			&quot;Breed&quot;: &quot;&quot;,&#xd;
+	  			&quot;Note&quot;: &quot;&quot;&#xd;
+  			}&#xd;
+  		]&#xd;
+  	},&#xd;
+  	{&#xd;
+  		&quot;configXerceViolationId&quot;: 2,&#xd;
+  		&quot;entities&quot;: [&#xd;
+  			{&#xd;
+	  			&quot;Vehicle Color&quot;: &quot;Black&quot;,&#xd;
+	  			&quot;License Number&quot;: &quot;1234&quot;,&#xd;
+	  			&quot;Model Number&quot;: 12,&#xd;
+	  			&quot;Note&quot;: &quot;&quot;&#xd;
+  			}&#xd;
+  		]&#xd;
+  	},&#xd;
+  	{&#xd;
+  		&quot;configXerceViolationId&quot;: 3,&#xd;
+  		&quot;entities&quot;: [&#xd;
+  			{&#xd;
+	  			&quot;Vehicle Color&quot;: &quot;Blue&quot;,&#xd;
+	  			&quot;License Number&quot;: &quot;5678&quot;,&#xd;
+	  			&quot;Model Number&quot;: 11,&#xd;
+	  			&quot;Note&quot;: &quot;&quot;&#xd;
+  			}&#xd;
+  		]&#xd;
+  	}&#xd;
+  ],&#xd;
+  &quot;customCaseFieldValues&quot;: [&#xd;
+  	{&#xd;
+          &quot;Property Lien&quot;: {&#xd;
+              &quot;Start Date&quot;: &quot;2017-08-30&quot;,&#xd;
+              &quot;End Date&quot;: &quot;2022-08-30&quot;,&#xd;
+              &quot;Property Lien Type&quot;: &quot;Long Term&quot;,&#xd;
+              &quot;Property Lien By&quot;: &quot;Mr. jhon Doe&quot;&#xd;
+          }&#xd;
+      }&#xd;
+   ],&#xd;
+   &quot;contacts&quot;: [&#xd;
+   	{&#xd;
+   		&quot;id&quot;: 1,&#xd;
+   		&quot;isBillable&quot;: false&#xd;
+   	}&#xd;
+   	]&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">xerce/cases</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Create Case" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+  &quot;assigneeId&quot;:1,&#xd;
+  &quot;inspectionAssigneeId&quot;: 1,&#xd;
+  &quot;inspectionDate&quot;:&quot;2019-08-30T17:12:23.561Z&quot;,&#xd;
+  &quot;issueDescription&quot;: &quot;This is my issue description.&quot;,&#xd;
+  &quot;location&quot;: {&#xd;
+    &quot;streetAddress&quot;: &quot;547,Alabama&quot;,&#xd;
+    &quot;city&quot;: &quot;Alabama&quot;,&#xd;
+    &quot;state&quot;: &quot;AL&quot;,&#xd;
+    &quot;zip&quot;: &quot;94016&quot;,&#xd;
+    &quot;latitude&quot;:34.0401465212326,&#xd;
+    &quot;longitude&quot;:-78.0749587334245,&#xd;
+    &quot;flagAddress&quot;: {&#xd;
+	    &quot;isFlagged&quot;: true,&#xd;
+	    &quot;reasonForFlagging&quot;: &quot;test reason&quot;&#xd;
+    },&#xd;
+    &quot;isCDBGEligible&quot;: false,&#xd;
+    &quot;isCDBGApproved&quot;: false,&#xd;
+    &quot;parcelFields&quot;: {&#xd;
+    },&#xd;
+    &quot;manualFields&quot;: {&#xd;
+    	&quot;Ward&quot;:&quot;Ward I&quot;,&#xd;
+    	&quot;Lot&quot;: 23,&#xd;
+    	&quot;Block&quot;: 1&#xd;
+    }&#xd;
+  },&#xd;
+  &quot;attachments&quot;: [&#xd;
+      {&#xd;
+          &quot;title&quot;: &quot;This is PNG attachment &quot;,&#xd;
+          &quot;description&quot;: &quot;this is a description&quot;,&#xd;
+          &quot;fileName&quot;: &quot;This is a file name1&quot;,&#xd;
+          &quot;fileSize&quot;: &quot;20KB&quot;,&#xd;
+          &quot;fileURL&quot;: &quot;https://cyberdyne-dev.s3.amazonaws.com/agency_1/staging/cases/actionspopup.png&quot;&#xd;
+      }&#xd;
+  ],&#xd;
+  &quot;violations&quot;: [&#xd;
+  	{&#xd;
+  		&quot;configXerceViolationId&quot;: 1,&#xd;
+  		&quot;entities&quot;: [&#xd;
+  			{&#xd;
+	  			&quot;Animal Colour&quot;: &quot;Black&quot;,&#xd;
+	  			&quot;License Number&quot;: &quot;1234&quot;,&#xd;
+	  			&quot;Age&quot;: 12,&#xd;
+	  			&quot;Breed&quot;: &quot;&quot;,&#xd;
+	  			&quot;Note&quot;: &quot;&quot;&#xd;
+  			}&#xd;
+  		]&#xd;
+  	},&#xd;
+  	{&#xd;
+  		&quot;configXerceViolationId&quot;: 2,&#xd;
+  		&quot;entities&quot;: [&#xd;
+  			{&#xd;
+	  			&quot;Vehicle Color&quot;: &quot;Black&quot;,&#xd;
+	  			&quot;License Number&quot;: &quot;1234&quot;,&#xd;
+	  			&quot;Model Number&quot;: 12,&#xd;
+	  			&quot;Note&quot;: &quot;&quot;&#xd;
+  			}&#xd;
+  		]&#xd;
+  	},&#xd;
+  	{&#xd;
+  		&quot;configXerceViolationId&quot;: 3,&#xd;
+  		&quot;entities&quot;: [&#xd;
+  			{&#xd;
+	  			&quot;Vehicle Color&quot;: &quot;Blue&quot;,&#xd;
+	  			&quot;License Number&quot;: &quot;5678&quot;,&#xd;
+	  			&quot;Model Number&quot;: 11,&#xd;
+	  			&quot;Note&quot;: &quot;&quot;&#xd;
+  			}&#xd;
+  		]&#xd;
+  	}&#xd;
+  ],&#xd;
+  &quot;customCaseFieldValues&quot;: [&#xd;
+  	{&#xd;
+          &quot;Property Lien&quot;: {&#xd;
+              &quot;Start Date&quot;: &quot;2017-08-30&quot;,&#xd;
+              &quot;End Date&quot;: &quot;2022-08-30&quot;,&#xd;
+              &quot;Property Lien Type&quot;: &quot;Long Term&quot;,&#xd;
+              &quot;Property Lien By&quot;: &quot;Mr. jhon Doe&quot;&#xd;
+          }&#xd;
+      }&#xd;
+   ],&#xd;
+   &quot;contacts&quot;: [&#xd;
+   	{&#xd;
+   		&quot;id&quot;: 1,&#xd;
+   		&quot;isBillable&quot;: false&#xd;
+   	}&#xd;
+   	]&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">xerce/cases</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Create Case" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+  &quot;assigneeId&quot;:1,&#xd;
+  &quot;inspectionAssigneeId&quot;: 1,&#xd;
+  &quot;inspectionDate&quot;:&quot;2019-08-30T17:12:23.561Z&quot;,&#xd;
+  &quot;issueDescription&quot;: &quot;This is my issue description.&quot;,&#xd;
+  &quot;location&quot;: {&#xd;
+    &quot;streetAddress&quot;: &quot;547,Alabama&quot;,&#xd;
+    &quot;city&quot;: &quot;Alabama&quot;,&#xd;
+    &quot;state&quot;: &quot;AL&quot;,&#xd;
+    &quot;zip&quot;: &quot;94016&quot;,&#xd;
+    &quot;latitude&quot;:34.0401465212326,&#xd;
+    &quot;longitude&quot;:-78.0749587334245,&#xd;
+    &quot;flagAddress&quot;: {&#xd;
+	    &quot;isFlagged&quot;: true,&#xd;
+	    &quot;reasonForFlagging&quot;: &quot;test reason&quot;&#xd;
+    },&#xd;
+    &quot;isCDBGEligible&quot;: false,&#xd;
+    &quot;isCDBGApproved&quot;: false,&#xd;
+    &quot;parcelFields&quot;: {&#xd;
+    },&#xd;
+    &quot;manualFields&quot;: {&#xd;
+    	&quot;Ward&quot;:&quot;Ward I&quot;,&#xd;
+    	&quot;Lot&quot;: 23,&#xd;
+    	&quot;Block&quot;: 1&#xd;
+    }&#xd;
+  },&#xd;
+  &quot;attachments&quot;: [&#xd;
+      {&#xd;
+          &quot;title&quot;: &quot;This is PNG attachment &quot;,&#xd;
+          &quot;description&quot;: &quot;this is a description&quot;,&#xd;
+          &quot;fileName&quot;: &quot;This is a file name1&quot;,&#xd;
+          &quot;fileSize&quot;: &quot;20KB&quot;,&#xd;
+          &quot;fileURL&quot;: &quot;https://cyberdyne-dev.s3.amazonaws.com/agency_1/staging/cases/actionspopup.png&quot;&#xd;
+      }&#xd;
+  ],&#xd;
+  &quot;violations&quot;: [&#xd;
+  	{&#xd;
+  		&quot;configXerceViolationId&quot;: 1,&#xd;
+  		&quot;entities&quot;: [&#xd;
+  			{&#xd;
+	  			&quot;Animal Colour&quot;: &quot;Black&quot;,&#xd;
+	  			&quot;License Number&quot;: &quot;1234&quot;,&#xd;
+	  			&quot;Age&quot;: 12,&#xd;
+	  			&quot;Breed&quot;: &quot;&quot;,&#xd;
+	  			&quot;Note&quot;: &quot;&quot;&#xd;
+  			}&#xd;
+  		]&#xd;
+  	},&#xd;
+  	{&#xd;
+  		&quot;configXerceViolationId&quot;: 2,&#xd;
+  		&quot;entities&quot;: [&#xd;
+  			{&#xd;
+	  			&quot;Vehicle Color&quot;: &quot;Black&quot;,&#xd;
+	  			&quot;License Number&quot;: &quot;1234&quot;,&#xd;
+	  			&quot;Model Number&quot;: 12,&#xd;
+	  			&quot;Note&quot;: &quot;&quot;&#xd;
+  			}&#xd;
+  		]&#xd;
+  	},&#xd;
+  	{&#xd;
+  		&quot;configXerceViolationId&quot;: 3,&#xd;
+  		&quot;entities&quot;: [&#xd;
+  			{&#xd;
+	  			&quot;Vehicle Color&quot;: &quot;Blue&quot;,&#xd;
+	  			&quot;License Number&quot;: &quot;5678&quot;,&#xd;
+	  			&quot;Model Number&quot;: 11,&#xd;
+	  			&quot;Note&quot;: &quot;&quot;&#xd;
+  			}&#xd;
+  		]&#xd;
+  	}&#xd;
+  ],&#xd;
+  &quot;customCaseFieldValues&quot;: [&#xd;
+  	{&#xd;
+          &quot;Property Lien&quot;: {&#xd;
+              &quot;Start Date&quot;: &quot;2017-08-30&quot;,&#xd;
+              &quot;End Date&quot;: &quot;2022-08-30&quot;,&#xd;
+              &quot;Property Lien Type&quot;: &quot;Long Term&quot;,&#xd;
+              &quot;Property Lien By&quot;: &quot;Mr. jhon Doe&quot;&#xd;
+          }&#xd;
+      }&#xd;
+   ],&#xd;
+   &quot;contacts&quot;: [&#xd;
+   	{&#xd;
+   		&quot;id&quot;: 1,&#xd;
+   		&quot;isBillable&quot;: false&#xd;
+   	}&#xd;
+   	]&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">xerce/cases</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Create Case" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+  &quot;assigneeId&quot;:1,&#xd;
+  &quot;inspectionAssigneeId&quot;: 1,&#xd;
+  &quot;inspectionDate&quot;:&quot;2019-08-30T17:12:23.561Z&quot;,&#xd;
+  &quot;issueDescription&quot;: &quot;This is my issue description.&quot;,&#xd;
+  &quot;location&quot;: {&#xd;
+    &quot;streetAddress&quot;: &quot;547,Alabama&quot;,&#xd;
+    &quot;city&quot;: &quot;Alabama&quot;,&#xd;
+    &quot;state&quot;: &quot;AL&quot;,&#xd;
+    &quot;zip&quot;: &quot;94016&quot;,&#xd;
+    &quot;latitude&quot;:34.0401465212326,&#xd;
+    &quot;longitude&quot;:-78.0749587334245,&#xd;
+    &quot;flagAddress&quot;: {&#xd;
+	    &quot;isFlagged&quot;: true,&#xd;
+	    &quot;reasonForFlagging&quot;: &quot;test reason&quot;&#xd;
+    },&#xd;
+    &quot;isCDBGEligible&quot;: false,&#xd;
+    &quot;isCDBGApproved&quot;: false,&#xd;
+    &quot;parcelFields&quot;: {&#xd;
+    },&#xd;
+    &quot;manualFields&quot;: {&#xd;
+    	&quot;Ward&quot;:&quot;Ward I&quot;,&#xd;
+    	&quot;Lot&quot;: 23,&#xd;
+    	&quot;Block&quot;: 1&#xd;
+    }&#xd;
+  },&#xd;
+  &quot;attachments&quot;: [&#xd;
+      {&#xd;
+          &quot;title&quot;: &quot;This is PNG attachment &quot;,&#xd;
+          &quot;description&quot;: &quot;this is a description&quot;,&#xd;
+          &quot;fileName&quot;: &quot;This is a file name1&quot;,&#xd;
+          &quot;fileSize&quot;: &quot;20KB&quot;,&#xd;
+          &quot;fileURL&quot;: &quot;https://cyberdyne-dev.s3.amazonaws.com/agency_1/staging/cases/actionspopup.png&quot;&#xd;
+      }&#xd;
+  ],&#xd;
+  &quot;violations&quot;: [&#xd;
+  	{&#xd;
+  		&quot;configXerceViolationId&quot;: 1,&#xd;
+  		&quot;entities&quot;: [&#xd;
+  			{&#xd;
+	  			&quot;Animal Colour&quot;: &quot;Black&quot;,&#xd;
+	  			&quot;License Number&quot;: &quot;1234&quot;,&#xd;
+	  			&quot;Age&quot;: 12,&#xd;
+	  			&quot;Breed&quot;: &quot;&quot;,&#xd;
+	  			&quot;Note&quot;: &quot;&quot;&#xd;
+  			}&#xd;
+  		]&#xd;
+  	},&#xd;
+  	{&#xd;
+  		&quot;configXerceViolationId&quot;: 2,&#xd;
+  		&quot;entities&quot;: [&#xd;
+  			{&#xd;
+	  			&quot;Vehicle Color&quot;: &quot;Black&quot;,&#xd;
+	  			&quot;License Number&quot;: &quot;1234&quot;,&#xd;
+	  			&quot;Model Number&quot;: 12,&#xd;
+	  			&quot;Note&quot;: &quot;&quot;&#xd;
+  			}&#xd;
+  		]&#xd;
+  	},&#xd;
+  	{&#xd;
+  		&quot;configXerceViolationId&quot;: 3,&#xd;
+  		&quot;entities&quot;: [&#xd;
+  			{&#xd;
+	  			&quot;Vehicle Color&quot;: &quot;Blue&quot;,&#xd;
+	  			&quot;License Number&quot;: &quot;5678&quot;,&#xd;
+	  			&quot;Model Number&quot;: 11,&#xd;
+	  			&quot;Note&quot;: &quot;&quot;&#xd;
+  			}&#xd;
+  		]&#xd;
+  	}&#xd;
+  ],&#xd;
+  &quot;customCaseFieldValues&quot;: [&#xd;
+  	{&#xd;
+          &quot;Property Lien&quot;: {&#xd;
+              &quot;Start Date&quot;: &quot;2017-08-30&quot;,&#xd;
+              &quot;End Date&quot;: &quot;2022-08-30&quot;,&#xd;
+              &quot;Property Lien Type&quot;: &quot;Long Term&quot;,&#xd;
+              &quot;Property Lien By&quot;: &quot;Mr. jhon Doe&quot;&#xd;
+          }&#xd;
+      }&#xd;
+   ],&#xd;
+   &quot;contacts&quot;: [&#xd;
+   	{&#xd;
+   		&quot;id&quot;: 1,&#xd;
+   		&quot;isBillable&quot;: false&#xd;
+   	}&#xd;
+   	]&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">xerce/cases</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Create Case" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+  &quot;assigneeId&quot;:1,&#xd;
+  &quot;inspectionAssigneeId&quot;: 1,&#xd;
+  &quot;inspectionDate&quot;:&quot;2019-08-30T17:12:23.561Z&quot;,&#xd;
+  &quot;issueDescription&quot;: &quot;This is my issue description.&quot;,&#xd;
+  &quot;location&quot;: {&#xd;
+    &quot;streetAddress&quot;: &quot;547,Alabama&quot;,&#xd;
+    &quot;city&quot;: &quot;Alabama&quot;,&#xd;
+    &quot;state&quot;: &quot;AL&quot;,&#xd;
+    &quot;zip&quot;: &quot;94016&quot;,&#xd;
+    &quot;latitude&quot;:34.0401465212326,&#xd;
+    &quot;longitude&quot;:-78.0749587334245,&#xd;
+    &quot;flagAddress&quot;: {&#xd;
+	    &quot;isFlagged&quot;: true,&#xd;
+	    &quot;reasonForFlagging&quot;: &quot;test reason&quot;&#xd;
+    },&#xd;
+    &quot;isCDBGEligible&quot;: false,&#xd;
+    &quot;isCDBGApproved&quot;: false,&#xd;
+    &quot;parcelFields&quot;: {&#xd;
+    },&#xd;
+    &quot;manualFields&quot;: {&#xd;
+    	&quot;Ward&quot;:&quot;Ward I&quot;,&#xd;
+    	&quot;Lot&quot;: 23,&#xd;
+    	&quot;Block&quot;: 1&#xd;
+    }&#xd;
+  },&#xd;
+  &quot;attachments&quot;: [&#xd;
+      {&#xd;
+          &quot;title&quot;: &quot;This is PNG attachment &quot;,&#xd;
+          &quot;description&quot;: &quot;this is a description&quot;,&#xd;
+          &quot;fileName&quot;: &quot;This is a file name1&quot;,&#xd;
+          &quot;fileSize&quot;: &quot;20KB&quot;,&#xd;
+          &quot;fileURL&quot;: &quot;https://cyberdyne-dev.s3.amazonaws.com/agency_1/staging/cases/actionspopup.png&quot;&#xd;
+      }&#xd;
+  ],&#xd;
+  &quot;violations&quot;: [&#xd;
+  	{&#xd;
+  		&quot;configXerceViolationId&quot;: 1,&#xd;
+  		&quot;entities&quot;: [&#xd;
+  			{&#xd;
+	  			&quot;Animal Colour&quot;: &quot;Black&quot;,&#xd;
+	  			&quot;License Number&quot;: &quot;1234&quot;,&#xd;
+	  			&quot;Age&quot;: 12,&#xd;
+	  			&quot;Breed&quot;: &quot;&quot;,&#xd;
+	  			&quot;Note&quot;: &quot;&quot;&#xd;
+  			}&#xd;
+  		]&#xd;
+  	},&#xd;
+  	{&#xd;
+  		&quot;configXerceViolationId&quot;: 2,&#xd;
+  		&quot;entities&quot;: [&#xd;
+  			{&#xd;
+	  			&quot;Vehicle Color&quot;: &quot;Black&quot;,&#xd;
+	  			&quot;License Number&quot;: &quot;1234&quot;,&#xd;
+	  			&quot;Model Number&quot;: 12,&#xd;
+	  			&quot;Note&quot;: &quot;&quot;&#xd;
+  			}&#xd;
+  		]&#xd;
+  	},&#xd;
+  	{&#xd;
+  		&quot;configXerceViolationId&quot;: 3,&#xd;
+  		&quot;entities&quot;: [&#xd;
+  			{&#xd;
+	  			&quot;Vehicle Color&quot;: &quot;Blue&quot;,&#xd;
+	  			&quot;License Number&quot;: &quot;5678&quot;,&#xd;
+	  			&quot;Model Number&quot;: 11,&#xd;
+	  			&quot;Note&quot;: &quot;&quot;&#xd;
+  			}&#xd;
+  		]&#xd;
+  	}&#xd;
+  ],&#xd;
+  &quot;customCaseFieldValues&quot;: [&#xd;
+  	{&#xd;
+          &quot;Property Lien&quot;: {&#xd;
+              &quot;Start Date&quot;: &quot;2017-08-30&quot;,&#xd;
+              &quot;End Date&quot;: &quot;2022-08-30&quot;,&#xd;
+              &quot;Property Lien Type&quot;: &quot;Long Term&quot;,&#xd;
+              &quot;Property Lien By&quot;: &quot;Mr. jhon Doe&quot;&#xd;
+          }&#xd;
+      }&#xd;
+   ],&#xd;
+   &quot;contacts&quot;: [&#xd;
+   	{&#xd;
+   		&quot;id&quot;: 1,&#xd;
+   		&quot;isBillable&quot;: false&#xd;
+   	}&#xd;
+   	]&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">xerce/cases</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Create Case" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+  &quot;assigneeId&quot;:1,&#xd;
+  &quot;inspectionAssigneeId&quot;: 1,&#xd;
+  &quot;inspectionDate&quot;:&quot;2019-08-30T17:12:23.561Z&quot;,&#xd;
+  &quot;issueDescription&quot;: &quot;This is my issue description.&quot;,&#xd;
+  &quot;location&quot;: {&#xd;
+    &quot;streetAddress&quot;: &quot;547,Alabama&quot;,&#xd;
+    &quot;city&quot;: &quot;Alabama&quot;,&#xd;
+    &quot;state&quot;: &quot;AL&quot;,&#xd;
+    &quot;zip&quot;: &quot;94016&quot;,&#xd;
+    &quot;latitude&quot;:34.0401465212326,&#xd;
+    &quot;longitude&quot;:-78.0749587334245,&#xd;
+    &quot;flagAddress&quot;: {&#xd;
+	    &quot;isFlagged&quot;: true,&#xd;
+	    &quot;reasonForFlagging&quot;: &quot;test reason&quot;&#xd;
+    },&#xd;
+    &quot;isCDBGEligible&quot;: false,&#xd;
+    &quot;isCDBGApproved&quot;: false,&#xd;
+    &quot;parcelFields&quot;: {&#xd;
+    },&#xd;
+    &quot;manualFields&quot;: {&#xd;
+    	&quot;Ward&quot;:&quot;Ward I&quot;,&#xd;
+    	&quot;Lot&quot;: 23,&#xd;
+    	&quot;Block&quot;: 1&#xd;
+    }&#xd;
+  },&#xd;
+  &quot;attachments&quot;: [&#xd;
+      {&#xd;
+          &quot;title&quot;: &quot;This is PNG attachment &quot;,&#xd;
+          &quot;description&quot;: &quot;this is a description&quot;,&#xd;
+          &quot;fileName&quot;: &quot;This is a file name1&quot;,&#xd;
+          &quot;fileSize&quot;: &quot;20KB&quot;,&#xd;
+          &quot;fileURL&quot;: &quot;https://cyberdyne-dev.s3.amazonaws.com/agency_1/staging/cases/actionspopup.png&quot;&#xd;
+      }&#xd;
+  ],&#xd;
+  &quot;violations&quot;: [&#xd;
+  	{&#xd;
+  		&quot;configXerceViolationId&quot;: 1,&#xd;
+  		&quot;entities&quot;: [&#xd;
+  			{&#xd;
+	  			&quot;Animal Colour&quot;: &quot;Black&quot;,&#xd;
+	  			&quot;License Number&quot;: &quot;1234&quot;,&#xd;
+	  			&quot;Age&quot;: 12,&#xd;
+	  			&quot;Breed&quot;: &quot;&quot;,&#xd;
+	  			&quot;Note&quot;: &quot;&quot;&#xd;
+  			}&#xd;
+  		]&#xd;
+  	},&#xd;
+  	{&#xd;
+  		&quot;configXerceViolationId&quot;: 2,&#xd;
+  		&quot;entities&quot;: [&#xd;
+  			{&#xd;
+	  			&quot;Vehicle Color&quot;: &quot;Black&quot;,&#xd;
+	  			&quot;License Number&quot;: &quot;1234&quot;,&#xd;
+	  			&quot;Model Number&quot;: 12,&#xd;
+	  			&quot;Note&quot;: &quot;&quot;&#xd;
+  			}&#xd;
+  		]&#xd;
+  	},&#xd;
+  	{&#xd;
+  		&quot;configXerceViolationId&quot;: 3,&#xd;
+  		&quot;entities&quot;: [&#xd;
+  			{&#xd;
+	  			&quot;Vehicle Color&quot;: &quot;Blue&quot;,&#xd;
+	  			&quot;License Number&quot;: &quot;5678&quot;,&#xd;
+	  			&quot;Model Number&quot;: 11,&#xd;
+	  			&quot;Note&quot;: &quot;&quot;&#xd;
+  			}&#xd;
+  		]&#xd;
+  	}&#xd;
+  ],&#xd;
+  &quot;customCaseFieldValues&quot;: [&#xd;
+  	{&#xd;
+          &quot;Property Lien&quot;: {&#xd;
+              &quot;Start Date&quot;: &quot;2017-08-30&quot;,&#xd;
+              &quot;End Date&quot;: &quot;2022-08-30&quot;,&#xd;
+              &quot;Property Lien Type&quot;: &quot;Long Term&quot;,&#xd;
+              &quot;Property Lien By&quot;: &quot;Mr. jhon Doe&quot;&#xd;
+          }&#xd;
+      }&#xd;
+   ],&#xd;
+   &quot;contacts&quot;: [&#xd;
+   	{&#xd;
+   		&quot;id&quot;: 1,&#xd;
+   		&quot;isBillable&quot;: false&#xd;
+   	}&#xd;
+   	]&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">xerce/cases</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Create Case" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+  &quot;assigneeId&quot;:1,&#xd;
+  &quot;inspectionAssigneeId&quot;: 1,&#xd;
+  &quot;inspectionDate&quot;:&quot;2019-08-30T17:12:23.561Z&quot;,&#xd;
+  &quot;issueDescription&quot;: &quot;This is my issue description.&quot;,&#xd;
+  &quot;location&quot;: {&#xd;
+    &quot;streetAddress&quot;: &quot;547,Alabama&quot;,&#xd;
+    &quot;city&quot;: &quot;Alabama&quot;,&#xd;
+    &quot;state&quot;: &quot;AL&quot;,&#xd;
+    &quot;zip&quot;: &quot;94016&quot;,&#xd;
+    &quot;latitude&quot;:34.0401465212326,&#xd;
+    &quot;longitude&quot;:-78.0749587334245,&#xd;
+    &quot;flagAddress&quot;: {&#xd;
+	    &quot;isFlagged&quot;: true,&#xd;
+	    &quot;reasonForFlagging&quot;: &quot;test reason&quot;&#xd;
+    },&#xd;
+    &quot;isCDBGEligible&quot;: false,&#xd;
+    &quot;isCDBGApproved&quot;: false,&#xd;
+    &quot;parcelFields&quot;: {&#xd;
+    },&#xd;
+    &quot;manualFields&quot;: {&#xd;
+    	&quot;Ward&quot;:&quot;Ward I&quot;,&#xd;
+    	&quot;Lot&quot;: 23,&#xd;
+    	&quot;Block&quot;: 1&#xd;
+    }&#xd;
+  },&#xd;
+  &quot;attachments&quot;: [&#xd;
+      {&#xd;
+          &quot;title&quot;: &quot;This is PNG attachment &quot;,&#xd;
+          &quot;description&quot;: &quot;this is a description&quot;,&#xd;
+          &quot;fileName&quot;: &quot;This is a file name1&quot;,&#xd;
+          &quot;fileSize&quot;: &quot;20KB&quot;,&#xd;
+          &quot;fileURL&quot;: &quot;https://cyberdyne-dev.s3.amazonaws.com/agency_1/staging/cases/actionspopup.png&quot;&#xd;
+      }&#xd;
+  ],&#xd;
+  &quot;violations&quot;: [&#xd;
+  	{&#xd;
+  		&quot;configXerceViolationId&quot;: 1,&#xd;
+  		&quot;entities&quot;: [&#xd;
+  			{&#xd;
+	  			&quot;Animal Colour&quot;: &quot;Black&quot;,&#xd;
+	  			&quot;License Number&quot;: &quot;1234&quot;,&#xd;
+	  			&quot;Age&quot;: 12,&#xd;
+	  			&quot;Breed&quot;: &quot;&quot;,&#xd;
+	  			&quot;Note&quot;: &quot;&quot;&#xd;
+  			}&#xd;
+  		]&#xd;
+  	},&#xd;
+  	{&#xd;
+  		&quot;configXerceViolationId&quot;: 2,&#xd;
+  		&quot;entities&quot;: [&#xd;
+  			{&#xd;
+	  			&quot;Vehicle Color&quot;: &quot;Black&quot;,&#xd;
+	  			&quot;License Number&quot;: &quot;1234&quot;,&#xd;
+	  			&quot;Model Number&quot;: 12,&#xd;
+	  			&quot;Note&quot;: &quot;&quot;&#xd;
+  			}&#xd;
+  		]&#xd;
+  	},&#xd;
+  	{&#xd;
+  		&quot;configXerceViolationId&quot;: 3,&#xd;
+  		&quot;entities&quot;: [&#xd;
+  			{&#xd;
+	  			&quot;Vehicle Color&quot;: &quot;Blue&quot;,&#xd;
+	  			&quot;License Number&quot;: &quot;5678&quot;,&#xd;
+	  			&quot;Model Number&quot;: 11,&#xd;
+	  			&quot;Note&quot;: &quot;&quot;&#xd;
+  			}&#xd;
+  		]&#xd;
+  	}&#xd;
+  ],&#xd;
+  &quot;customCaseFieldValues&quot;: [&#xd;
+  	{&#xd;
+          &quot;Property Lien&quot;: {&#xd;
+              &quot;Start Date&quot;: &quot;2017-08-30&quot;,&#xd;
+              &quot;End Date&quot;: &quot;2022-08-30&quot;,&#xd;
+              &quot;Property Lien Type&quot;: &quot;Long Term&quot;,&#xd;
+              &quot;Property Lien By&quot;: &quot;Mr. jhon Doe&quot;&#xd;
+          }&#xd;
+      }&#xd;
+   ],&#xd;
+   &quot;contacts&quot;: [&#xd;
+   	{&#xd;
+   		&quot;id&quot;: 1,&#xd;
+   		&quot;isBillable&quot;: false&#xd;
+   	}&#xd;
+   	]&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">xerce/cases</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Get All Cases_consecutive" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">10</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">10</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">5</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="User Admin Header" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Content-Type</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Accept</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Authorization</stringProp>
+              <stringProp name="Header.value">Bearer ${__property(super_admin_token)}</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get All cases" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">xerce/cases</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Get All Cases_parallel" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="User Admin Header" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Content-Type</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Accept</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Authorization</stringProp>
+              <stringProp name="Header.value">Bearer ${__property(super_admin_token)}</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <com.blazemeter.jmeter.controller.ParallelSampler guiclass="com.blazemeter.jmeter.controller.ParallelControllerGui" testclass="com.blazemeter.jmeter.controller.ParallelSampler" testname="bzm - Parallel Controller" enabled="true">
+          <boolProp name="PARENT_SAMPLE">true</boolProp>
+        </com.blazemeter.jmeter.controller.ParallelSampler>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get All cases" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">xerce/cases</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get All cases" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">xerce/cases</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get All cases" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">xerce/cases</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get All cases" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">xerce/cases</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get All cases" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">xerce/cases</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get All cases" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">xerce/cases</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get All cases" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">xerce/cases</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get All cases" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">xerce/cases</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get All cases" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">xerce/cases</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get All cases" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">xerce/cases</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CDBG Upload Consecutive" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">5</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1000</stringProp>
+        <longProp name="ThreadGroup.start_time">1556522218000</longProp>
+        <longProp name="ThreadGroup.end_time">1556522218000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Admin Header" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Content-Type</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Accept</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Authorization</stringProp>
+              <stringProp name="Header.value">Bearer ${__property(admin_token)}</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CDBG Upload" enabled="true">
+          <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
+            <collectionProp name="HTTPFileArgs.files">
+              <elementProp name="/home/mayuri/Downloads/GIS/cdbg_data.gdb.zip" elementType="HTTPFileArg">
+                <stringProp name="File.path">/home/mayuri/Downloads/GIS/cdbg_data.gdb.zip</stringProp>
+                <stringProp name="File.paramname">shapefile</stringProp>
+                <stringProp name="File.mimetype">application/zip</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">admin/gis/layers/cdbg</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.implementation">Java</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CDBG Upload Paralle" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">10</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <com.blazemeter.jmeter.controller.ParallelSampler guiclass="com.blazemeter.jmeter.controller.ParallelControllerGui" testclass="com.blazemeter.jmeter.controller.ParallelSampler" testname="bzm - Parallel Controller" enabled="true">
+          <boolProp name="PARENT_SAMPLE">true</boolProp>
+        </com.blazemeter.jmeter.controller.ParallelSampler>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Admin Header" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.value">Bearer ${__property(admin_token)}</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CDBG Upload" enabled="true">
+            <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
+              <collectionProp name="HTTPFileArgs.files">
+                <elementProp name="/home/mayuri/Downloads/GIS/cdbg_data.gdb.zip" elementType="HTTPFileArg">
+                  <stringProp name="File.path">/home/mayuri/Downloads/GIS/cdbg_data.gdb.zip</stringProp>
+                  <stringProp name="File.paramname">shapefile</stringProp>
+                  <stringProp name="File.mimetype">application/zip</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">admin/gis/layers/cdbg</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.implementation">Java</stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CDBG Upload" enabled="true">
+            <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
+              <collectionProp name="HTTPFileArgs.files">
+                <elementProp name="/home/mayuri/Downloads/GIS/cdbg_data.gdb.zip" elementType="HTTPFileArg">
+                  <stringProp name="File.path">/home/mayuri/Downloads/GIS/cdbg_data.gdb.zip</stringProp>
+                  <stringProp name="File.paramname">shapefile</stringProp>
+                  <stringProp name="File.mimetype">application/zip</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">admin/gis/layers/cdbg</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.implementation">Java</stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CDBG Upload" enabled="true">
+            <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
+              <collectionProp name="HTTPFileArgs.files">
+                <elementProp name="/home/mayuri/Downloads/GIS/cdbg_data.gdb.zip" elementType="HTTPFileArg">
+                  <stringProp name="File.path">/home/mayuri/Downloads/GIS/cdbg_data.gdb.zip</stringProp>
+                  <stringProp name="File.paramname">shapefile</stringProp>
+                  <stringProp name="File.mimetype">application/zip</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">admin/gis/layers/cdbg</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.implementation">Java</stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CDBG Upload" enabled="true">
+            <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
+              <collectionProp name="HTTPFileArgs.files">
+                <elementProp name="/home/mayuri/Downloads/GIS/cdbg_data.gdb.zip" elementType="HTTPFileArg">
+                  <stringProp name="File.path">/home/mayuri/Downloads/GIS/cdbg_data.gdb.zip</stringProp>
+                  <stringProp name="File.paramname">shapefile</stringProp>
+                  <stringProp name="File.mimetype">application/zip</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">admin/gis/layers/cdbg</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.implementation">Java</stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>false</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>false</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <ResultCollector guiclass="GraphVisualizer" testclass="ResultCollector" testname="Graph Results" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>false</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
