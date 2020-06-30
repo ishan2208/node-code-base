@@ -16,7 +16,7 @@
     "child-process-promise": "2.2.1",
     "express": "4.16.4",
     "express-http-context": "1.2.0",
-    "express-jwt": "5.3.1",
+    "express-jwt": "6.0.0",
     "fs-extra": "7.0.1",
     "handlebars": "4.1.2",
     "helmet": "3.15.0",
